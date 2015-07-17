@@ -24,7 +24,7 @@
 
  1. Define Separate Data Schemas
 
- I'm transcribing the available information from the WSDL definition and REST service responses into JSON Schema documents. [These schema documents](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas) are then used to generate Java POJO objects via [jsonschema2pojo library](https://github.com/joelittlejohn/jsonschema2pojo/). We're taking this databinding approach to ensure that the JSON Schemas can be reused to generate service datamodel objects for other languages and platforms (though this library will remain Java focused).
+ I'm transcribing the available information from the WSDL definition and REST service responses into JSON Schema documents. [These schema documents](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas) are then used to generate Java POJO objects via [jsonschema2pojo](https://github.com/joelittlejohn/jsonschema2pojo/). We're taking this databinding approach with the intention to make the JSON Schemas reusable across other languages and platforms (though this library will remain Android/Java focused).
 
  2. Create Service Proxies
 

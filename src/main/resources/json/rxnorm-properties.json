@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "javaType" : "com.apothesource.pillfill.rxnorm.datamodel.RxNormPropertiesResponse",
+  "properties": {
+    "propConceptGroup": {
+      "id": "propConceptGroup",
+      "type": "object",
+      "properties": {
+        "propConcept": {
+          "id": "propConcept",
+          "type": "array",
+          "items": {
+            "id": "1",
+            "type": "object",
+            "properties": {
+              "propCategory": {
+                "id": "propCategory",
+                "type": "string"
+              },
+              "propName": {
+                "id": "propName",
+                "type": "string"
+              },
+              "propValue": {
+                "id": "propValue",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

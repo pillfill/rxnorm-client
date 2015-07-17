@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://apothesource.com/ndfrt-concepts",
+  "type": "object",
+  "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.ConceptGroupResponse",
+  "properties": {
+    "groupConcepts": {
+      "$ref":"ndfrt.json#/definitions/conceptList"
+    },
+    "responseType": {
+      "id": "responseType",
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.ConceptGroupResponse",
+      "properties": {
+        "inputPropertyName": {
+          "type": "string"
+        },
+        "inputConceptName": {
+          "type": "string"
+        },
+        "inputKindName": {
+          "type": "string"
+        },
+        "inputIdType": {
+          "type": "string"
+        },
+        "inputIdString": {
+          "type": "string"
+        },
+        "inputPropertyValue": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

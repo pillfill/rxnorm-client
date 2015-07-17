@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://apothesource.com/rxnorm/interaction/interaction-drug",
+  "type": "object",
+  "javaType" : "com.apothesource.pillfill.rxnorm.datamodel.interaction.InteractionDrugResponse",
+  "extends" : {"$ref":"rxnorm-common.json#/definitions/interactionBaseResponse"},
+  "properties": {
+    "interactionTypeGroup": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sourceDisclaimer": {
+            "type": "string"
+          },
+          "sourceName": {
+            "type": "string"
+          },
+          "interactionType": {
+            "$ref":"rxnorm-common.json#/definitions/interactionType"
+          }
+        }
+      }
+    }
+  }
+}

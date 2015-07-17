@@ -1,0 +1,162 @@
+{
+  "fullInteractionTypeGroup": [
+    {
+      "fullInteractionType": [
+        {
+          "comment": "Drug1 (rxcui = 152923, name = Simvastatin 40 MG Oral Tablet [Zocor], tty = SBD). Drug2 (rxcui = 656659, name = bosentan 125 MG Oral Tablet, tty = SCD). Drug1 is resolved to Simvastatin, Drug2 is resolved to bosentan and interaction asserted in DrugBank between Simvastatin and Bosentan.",
+          "interactionPair": [
+            {
+              "description": "May increase the metabolism of HMG-CoA Reductase Inhibitors.",
+              "interactionConcept": [
+                {
+                  "minConceptItem": {
+                    "name": "Simvastatin",
+                    "rxcui": "36567",
+                    "tty": "IN"
+                  },
+                  "sourceConceptItem": {
+                    "id": "DB00641,APRD00104",
+                    "name": "Simvastatin",
+                    "url": "http://www.drugbank.ca/drugs/DB00641#interactions"
+                  }
+                },
+                {
+                  "minConceptItem": {
+                    "name": "bosentan",
+                    "rxcui": "75207",
+                    "tty": "IN"
+                  },
+                  "sourceConceptItem": {
+                    "id": "DB00559,APRD00829",
+                    "name": "Bosentan",
+                    "url": "http://www.drugbank.ca/drugs/DB00559#interactions"
+                  }
+                }
+              ],
+              "severity": "N/A"
+            }
+          ],
+          "minConcept": [
+            {
+              "name": "Simvastatin 40 MG Oral Tablet [Zocor]",
+              "rxcui": "152923",
+              "tty": "SBD"
+            },
+            {
+              "name": "bosentan 125 MG Oral Tablet",
+              "rxcui": "656659",
+              "tty": "SCD"
+            }
+          ]
+        },
+        {
+          "comment": "Drug1 (rxcui = 152923, name = Simvastatin 40 MG Oral Tablet [Zocor], tty = SBD). Drug2 (rxcui = 207106, name = Fluconazole 50 MG Oral Tablet [Diflucan], tty = SBD). Drug1 is resolved to Simvastatin, Drug2 is resolved to Fluconazole and interaction asserted in DrugBank between Simvastatin and Fluconazole.",
+          "interactionPair": [
+            {
+              "description": "Fluconazole may increase the serum concentration of Simvastatin.",
+              "interactionConcept": [
+                {
+                  "minConceptItem": {
+                    "name": "Simvastatin",
+                    "rxcui": "36567",
+                    "tty": "IN"
+                  },
+                  "sourceConceptItem": {
+                    "id": "DB00641,APRD00104",
+                    "name": "Simvastatin",
+                    "url": "http://www.drugbank.ca/drugs/DB00641#interactions"
+                  }
+                },
+                {
+                  "minConceptItem": {
+                    "name": "Fluconazole",
+                    "rxcui": "4450",
+                    "tty": "IN"
+                  },
+                  "sourceConceptItem": {
+                    "id": "DB00196,APRD00327",
+                    "name": "Fluconazole",
+                    "url": "http://www.drugbank.ca/drugs/DB00196#interactions"
+                  }
+                }
+              ],
+              "severity": "N/A"
+            }
+          ],
+          "minConcept": [
+            {
+              "name": "Simvastatin 40 MG Oral Tablet [Zocor]",
+              "rxcui": "152923",
+              "tty": "SBD"
+            },
+            {
+              "name": "Fluconazole 50 MG Oral Tablet [Diflucan]",
+              "rxcui": "207106",
+              "tty": "SBD"
+            }
+          ]
+        },
+        {
+          "comment": "Drug1 (rxcui = 207106, name = Fluconazole 50 MG Oral Tablet [Diflucan], tty = SBD). Drug2 (rxcui = 656659, name = bosentan 125 MG Oral Tablet, tty = SCD). Drug1 is resolved to Fluconazole, Drug2 is resolved to bosentan and interaction asserted in DrugBank between Fluconazole and Bosentan.",
+          "interactionPair": [
+            {
+              "description": "CYP3A4 Inhibitors (Moderate) may increase the serum concentration of Bosentan.",
+              "interactionConcept": [
+                {
+                  "minConceptItem": {
+                    "name": "Fluconazole",
+                    "rxcui": "4450",
+                    "tty": "IN"
+                  },
+                  "sourceConceptItem": {
+                    "id": "DB00196,APRD00327",
+                    "name": "Fluconazole",
+                    "url": "http://www.drugbank.ca/drugs/DB00196#interactions"
+                  }
+                },
+                {
+                  "minConceptItem": {
+                    "name": "bosentan",
+                    "rxcui": "75207",
+                    "tty": "IN"
+                  },
+                  "sourceConceptItem": {
+                    "id": "DB00559,APRD00829",
+                    "name": "Bosentan",
+                    "url": "http://www.drugbank.ca/drugs/DB00559#interactions"
+                  }
+                }
+              ],
+              "severity": "N/A"
+            }
+          ],
+          "minConcept": [
+            {
+              "name": "Fluconazole 50 MG Oral Tablet [Diflucan]",
+              "rxcui": "207106",
+              "tty": "SBD"
+            },
+            {
+              "name": "bosentan 125 MG Oral Tablet",
+              "rxcui": "656659",
+              "tty": "SCD"
+            }
+          ]
+        }
+      ],
+      "sourceDisclaimer": "The content of DrugBank is intended for educational and scientific research purposes only. It is notintended as a substitute for professional medical advice, diagnosis or treatment.[www.drugbank.ca]",
+      "sourceName": "DrugBank"
+    }
+  ],
+  "nlmDisclaimer": "It is not the intention of NLM to provide specific medical advice, but rather to provide users with information to better understand their health and their medications. NLM urges you to consult with a qualified physician for advice about medications.",
+  "userInput": {
+    "rxcuis": [
+      "207106",
+      "152923",
+      "656659"
+    ],
+    "sources": [
+      ""
+    ]
+  }
+}

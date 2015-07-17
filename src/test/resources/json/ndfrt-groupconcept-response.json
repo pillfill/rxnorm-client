@@ -1,0 +1,22 @@
+{
+  "responseType": {
+    "inputPropertyName": "RxNorm_CUI",
+    "inputPropertyValue": "161"
+  },
+  "groupConcepts": [
+    {
+      "concept": [
+        {
+          "conceptName": "ACETAMINOPHEN",
+          "conceptNui": "N0000145898",
+          "conceptKind": "DRUG_KIND"
+        },
+        {
+          "conceptName": "Acetaminophen",
+          "conceptNui": "N0000007359",
+          "conceptKind": "INGREDIENT_KIND"
+        }
+      ]
+    }
+  ]
+}

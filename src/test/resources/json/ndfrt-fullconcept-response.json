@@ -1,0 +1,133 @@
+{
+  "responseType": {
+    "inputNui1": "N0000152900"
+  },
+  "fullConcept": {
+    "conceptName": "ACETIC ACID 2%/HYDROCORTISONE 1% SOLN,OTIC",
+    "conceptKind": "DRUG_KIND",
+    "conceptNui": "N0000152900",
+    "parentConcepts": [
+      {
+        "concept": [
+          {
+            "conceptName": "ACETIC ACID/HYDROCORTISONE",
+            "conceptNui": "N0000020387",
+            "conceptKind": "DRUG_KIND"
+          },
+          {
+            "conceptName": "ANTI-INFECTIVE/ANTI-INFLAMMATORY COMBINATIONS,TOPICAL OTIC",
+            "conceptNui": "N0000029341",
+            "conceptKind": "DRUG_KIND"
+          }
+        ]
+      }
+    ],
+    "childConcepts": [
+      null
+    ],
+    "groupProperties": [
+      {
+        "property": [
+          {
+            "propertyName": "CS_Federal_Schedule",
+            "propertyValue": "0"
+          },
+          {
+            "propertyName": "Display_Name",
+            "propertyValue": "ACETIC ACID 2%/HYDROCORTISONE 1% SOLN,OTIC"
+          },
+          {
+            "propertyName": "Level",
+            "propertyValue": "VA Product"
+          },
+          {
+            "propertyName": "NUI",
+            "propertyValue": "N0000152900"
+          },
+          {
+            "propertyName": "Print_Name",
+            "propertyValue": "ACETIC ACID 2/HC 1% OTIC SOLN"
+          },
+          {
+            "propertyName": "RxNorm_CUI",
+            "propertyValue": "313786"
+          },
+          {
+            "propertyName": "RxNorm_Name",
+            "propertyValue": "Acetic Acid 20 MG/ML / Hydrocortisone 10 MG/ML Otic Solution"
+          },
+          {
+            "propertyName": "UMLS_CUI",
+            "propertyValue": "C0981197"
+          },
+          {
+            "propertyName": "VANDF_Record",
+            "propertyValue": "<VANDF_Record>50.68^4308^Active/Master</VANDF_Record><VA_File>50.68</VA_File><VA_IEN>4308</VA_IEN><VA_Status>Active/Master</VA_Status>"
+          },
+          {
+            "propertyName": "VA_National_Formulary_Name",
+            "propertyValue": "ACETIC ACID/HYDROCORTISONE SOLN,OTIC"
+          },
+          {
+            "propertyName": "VUID",
+            "propertyValue": "4004860"
+          },
+          {
+            "propertyName": "code",
+            "propertyValue": "C32240"
+          },
+          {
+            "propertyName": "label",
+            "propertyValue": "ACETIC ACID 2%/HYDROCORTISONE 1% SOLN,OTIC [VA Product]"
+          },
+          {
+            "propertyName": "kind",
+            "propertyValue": "DRUG_KIND"
+          }
+        ]
+      }
+    ],
+    "groupRoles": [
+      {
+        "role": [
+          {
+            "roleName": "has_DoseForm {NDFRT}",
+            "concept": [
+              {
+                "conceptName": "Otic Solution",
+                "conceptNui": "N0000135765",
+                "conceptKind": "DOSE_FORM_KIND"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "groupAssociations": [
+      {
+        "association": [
+          {
+            "associationName": "Product_Component",
+            "concept": [
+              {
+                "conceptName": "ACETIC ACID",
+                "conceptNui": "N0000145831",
+                "conceptKind": "DRUG_KIND"
+              }
+            ]
+          },
+          {
+            "associationName": "Product_Component",
+            "concept": [
+              {
+                "conceptName": "HYDROCORTISONE",
+                "conceptNui": "N0000146291",
+                "conceptKind": "DRUG_KIND"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

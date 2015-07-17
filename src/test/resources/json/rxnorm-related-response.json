@@ -1,0 +1,198 @@
+{
+  "allRelatedGroup": {
+    "conceptGroup": [
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Zyrtec Itchy Eye",
+            "rxcui": "866350",
+            "suppress": "N",
+            "synonym": "",
+            "tty": "BN",
+            "umlscui": "C2723240"
+          }
+        ],
+        "tty": "BN"
+      },
+      {
+        "tty": "BPCK"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Ophthalmic Solution",
+            "rxcui": "7670",
+            "suppress": "N",
+            "synonym": "",
+            "tty": "DF",
+            "umlscui": "C0029083"
+          }
+        ],
+        "tty": "DF"
+      },
+      {
+        "tty": "GPCK"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Ketotifen",
+            "rxcui": "6146",
+            "suppress": "N",
+            "synonym": "",
+            "tty": "IN",
+            "umlscui": "C0022642"
+          }
+        ],
+        "tty": "IN"
+      },
+      {
+        "tty": "MIN"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Ketotifen Fumarate",
+            "rxcui": "11404",
+            "suppress": "N",
+            "synonym": "",
+            "tty": "PIN",
+            "umlscui": "C0043443"
+          }
+        ],
+        "tty": "PIN"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Ketotifen 0.25 MG/ML Ophthalmic Solution [Zyrtec Itchy Eye]",
+            "rxcui": "866353",
+            "suppress": "N",
+            "synonym": "Zyrtec Itchy Eye 0.025 % Ophthalmic Solution",
+            "tty": "SBD",
+            "umlscui": "C2723243"
+          }
+        ],
+        "tty": "SBD"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Ketotifen 0.25 MG/ML [Zyrtec Itchy Eye]",
+            "rxcui": "866351",
+            "suppress": "N",
+            "synonym": "",
+            "tty": "SBDC",
+            "umlscui": "C2723241"
+          }
+        ],
+        "tty": "SBDC"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Ketotifen Ophthalmic Solution [Zyrtec Itchy Eye]",
+            "rxcui": "866352",
+            "suppress": "N",
+            "synonym": "",
+            "tty": "SBDF",
+            "umlscui": "C2723242"
+          }
+        ],
+        "tty": "SBDF"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Ketotifen 0.25 MG/ML Ophthalmic Solution",
+            "rxcui": "311237",
+            "suppress": "N",
+            "synonym": "ketotifen 0.025 % Ophthalmic Solution",
+            "tty": "SCD",
+            "umlscui": "C0978054"
+          }
+        ],
+        "tty": "SCD"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Ketotifen 0.25 MG/ML",
+            "rxcui": "330367",
+            "suppress": "N",
+            "synonym": "",
+            "tty": "SCDC",
+            "umlscui": "C1126007"
+          }
+        ],
+        "tty": "SCDC"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Ketotifen Ophthalmic Solution",
+            "rxcui": "372550",
+            "suppress": "N",
+            "synonym": "",
+            "tty": "SCDF",
+            "umlscui": "C1246608"
+          }
+        ],
+        "tty": "SCDF"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Ketotifen Ophthalmic Product",
+            "rxcui": "1160974",
+            "suppress": "N",
+            "synonym": "",
+            "tty": "SCDG",
+            "umlscui": "C3215329"
+          }
+        ],
+        "tty": "SCDG"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Zyrtec Itchy Eye Ophthalmic Product",
+            "rxcui": "1186676",
+            "suppress": "N",
+            "synonym": "",
+            "tty": "SBDG",
+            "umlscui": "C3240428"
+          }
+        ],
+        "tty": "SBDG"
+      },
+      {
+        "conceptProperties": [
+          {
+            "language": "ENG",
+            "name": "Ophthalmic Product",
+            "rxcui": "1151135",
+            "suppress": "N",
+            "synonym": "",
+            "tty": "DFG",
+            "umlscui": "C3205668"
+          }
+        ],
+        "tty": "DFG"
+      }
+    ],
+    "rxcui": "866350"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "minConceptItem": {
+      "id": "http://apothesource.com/rxnorm/minConceptItem",
+      "type": "object",
+      "properties": {
+        "rxcui": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tty": {
+          "type": "string"
+        }
+      }
+    },
+    "interactionConcept": {
+      "id": "http://apothesource.com/rxnorm/interaction/interactionConcept",
+      "type": "object",
+      "properties": {
+        "minConceptItem": {
+          "$ref": "#/definitions/minConceptItem"
+        },
+        "sourceConceptItem": {
+          "$ref": "#/definitions/sourceConceptItem"
+        }
+      }
+    },
+    "sourceConceptItem": {
+      "id": "http://apothesource.com/rxnorm/sourceConceptItem",
+      "extends": {"$ref":"#/definitions/minConceptItem"},
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "interactionBaseResponse": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.interaction.InteractionBaseResponse",
+      "properties": {
+        "nlmDisclaimer": {
+          "type": "string"
+        },
+        "userInput": {
+          "$ref": "rxnorm-common.json#/definitions/userInput"
+        }
+      }
+    },
+    "interactionType":{
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string"
+          },
+          "minConceptItem": {
+            "$ref": "#definitions/minConceptItem"
+          },
+          "interactionPair": {
+            "$ref": "#definitions/interactionPair"
+          }
+        }
+      }
+    },
+    "fullInteractionType":{
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string"
+          },
+          "minConcept": {
+            "type": "array",
+            "items": {
+              "$ref": "#definitions/minConceptItem"
+            }
+          },
+          "interactionPair": {
+            "$ref": "#definitions/interactionPair"
+          }
+        }
+      }
+    },
+    "userInput": {
+      "id": "http://apothesource.com/rxnorm/userInput",
+      "type": "object",
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rxcui": {
+          "type": "string"
+        }
+      }
+    },
+    "interactionPair": {
+      "id": "http://apothesource.com/rxnorm/interaction/interactionPair",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "interactionConcept": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/interactionConcept"
+            }
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

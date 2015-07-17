@@ -1,0 +1,85 @@
+{
+  "nlmDisclaimer": "It is not the intention of NLM to provide specific medical advice, but rather to provide users with information to better understand their health and their medications. NLM urges you to consult with a qualified physician for advice about medications.",
+  "userInput": {
+    "sources": [
+      ""
+    ],
+    "rxcui": "25120"
+  },
+  "interactionTypeGroup": [
+    {
+      "sourceDisclaimer": "The content of DrugBank is intended for educational and scientific research purposes only. It is notintended as a substitute for professional medical advice, diagnosis or treatment.[www.drugbank.ca]",
+      "sourceName": "Drugbank",
+      "interactionType": [
+        {
+          "comment": "flunisolide (25120) is resolved to flunisolide (25120)",
+          "minConceptItem": {
+            "rxcui": "25120",
+            "name": "flunisolide",
+            "tty": "IN"
+          },
+          "interactionPair": [
+            {
+              "interactionConcept": [
+                {
+                  "minConceptItem": {
+                    "rxcui": "25120",
+                    "name": "flunisolide",
+                    "tty": "IN"
+                  },
+                  "sourceConceptItem": {
+                    "id": "DB00180,APRD00976",
+                    "name": "Flunisolide",
+                    "url": "http://www.drugbank.ca/drugs/DB00180#interactions"
+                  }
+                },
+                {
+                  "minConceptItem": {
+                    "rxcui": "274786",
+                    "name": "telithromycin",
+                    "tty": "IN"
+                  },
+                  "sourceConceptItem": {
+                    "id": "DB00976,APRD00483",
+                    "name": "Telithromycin",
+                    "url": "http://www.drugbank.ca/drugs/DB00976#interactions"
+                  }
+                }
+              ],
+              "description": "Telithromycin may reduce clearance of Flunisolide. Consider alternate therapy or monitor for changes in the therapeutic/adverse effects of Flunisolide if Telithromycin is initiated, discontinued or dose changed."
+            },
+            {
+              "interactionConcept": [
+                {
+                  "minConceptItem": {
+                    "rxcui": "25120",
+                    "name": "flunisolide",
+                    "tty": "IN"
+                  },
+                  "sourceConceptItem": {
+                    "id": "DB00180,APRD00976",
+                    "name": "Flunisolide",
+                    "url": "http://www.drugbank.ca/drugs/DB00180#interactions"
+                  }
+                },
+                {
+                  "minConceptItem": {
+                    "rxcui": "121243",
+                    "name": "voriconazole",
+                    "tty": "IN"
+                  },
+                  "sourceConceptItem": {
+                    "id": "DB00582,APRD00543",
+                    "name": "Voriconazole",
+                    "url": "http://www.drugbank.ca/drugs/DB00582#interactions"
+                  }
+                }
+              ],
+              "description": "Voriconazole, a strong CYP3A4 inhibitor, may increase the serum concentration of flunisolide by decreasing its metabolism. Monitor for changes in the therapeutic and adverse effects of flunisolide if voriconazole is initiated, discontinued or dose changed."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

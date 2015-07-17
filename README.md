@@ -8,22 +8,24 @@
 
  The method endorsed by RxNav to [build WSDL client stubs](http://rxnav.nlm.nih.gov/RxNormAPIMakeApp.html) for their SOAP interface, however, is painful and doesn't work well for most mobile platforms. Several years ago we tried to force a WSDL client onto Android anyway, eventually abandoning the idea after plenty of frustration. It now appears that [we were in good company](https://stackoverflow.com/questions/5461127/using-jaxb-with-google-android).
 
- It's also important to note that there's no separate schema for the underlying drug data since datamodels, bindings, etc are [all baked into WSDL definitions](http://rxnav.nlm.nih.gov/RxNormDBService.xml)). There are [database schema/RRF files](http://www.nlm.nih.gov/research/umls/rxnorm/docs/rxnormfiles.html), but they aren't terribly helpful since the service bindings we're interested in appear to be Java→WSDL generated.
+ As far as we're aware, there is no separate schema for the service objects since [everything is baked into WSDL definitions](http://rxnav.nlm.nih.gov/RxNormDBService.xml). There are [database schema/RRF files](http://www.nlm.nih.gov/research/umls/rxnorm/docs/rxnormfiles.html) available, but aren't terribly helpful since the service bindings we'd need interested in all appear to be defined in code and Java→WSDL generated.
 
 ##Strategy
 
- So this project was started to (slowly) build an RxNorm REST client with development broken it into two separate efforts:
+ This project was started to (slowly) build an RxNorm REST client with development broken it into two separate efforts:
 
  1. Define Separate Data Schemas
 
- I'm transcribing the available information from the WSDL definition and REST service responses into JSON Schema documents. [These schema documents](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas) are then used to generate Java POJO objects via [jsonschema2pojo](https://github.com/joelittlejohn/jsonschema2pojo/). We're taking this databinding approach with the intention to make the JSON Schemas reusable across other languages and platforms (though this library will remain Android/Java focused).
+ Our current approach is to transcribe the available service information from the WSDL definition and REST service responses into JSON Schema documents. [These schema documents](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas) are then used to generate Java POJO objects via [jsonschema2pojo](https://github.com/joelittlejohn/jsonschema2pojo/). We're taking this databinding approach with the intention to make the JSON Schemas reusable across other languages and platforms (though this library will remain Android/Java focused).
 
- 2. Create Service Proxies
+ 2. Create (Simple) Service Proxies
 
- Once we've made good progress on the data bindings, we'll also build include some lightweight service proxies to simplify interaction with the RxNav REST services. This should be the (relatively) easy part!
+ We also plan to build some lightweight service proxies modeled after the RxNav service documentation. The mapping between APIs and service objects isn't obvious, so the service proxies should reduce some of that confusion.
 
 
-That said, we'll try to stick to a few principles along the way:
+##Goals
+
+Nothing too ambitious, but we'll try to stick to a few principles along the way:
 
  * Minimize external runtime dependencies- Currently only the Gson library.
  * Keep the library focused on the data schemas and basic service proxies.
@@ -35,11 +37,11 @@ That said, we'll try to stick to a few principles along the way:
 
 ##Current Status
 
- We have a subset of JSON schemas defined and unit tested for the RxNorm, NDFRT, and Interaction services.
+ We have a subset of JSON schemas defined and unit tested for the [RxNorm, NDFRT, and Interaction](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas) services.
 
- None of the service proxies have been built yet, but I currently plan to use the Gson library to manage deserialization of data received from the REST services.
+ None of the service proxies have been built yet, though the current plan is to use Gson to manage serialization tasks.
 
- Want to contribute? Pull requests are certainly encouraged!
+ Want to contribute? Pull requests are encouraged!
 
 
 ##Building and Use

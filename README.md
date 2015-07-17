@@ -25,10 +25,9 @@
  1. Define Separate Data Schemas
 
  Since we don't have a clean data schema to build off of, I'm transcribing the available information from the WSDL definition
- and REST service responses into JSON Schema documents. Those schema documents are then used to generate Java POJO objects
- using the [jsonschema2pojo library](https://github.com/joelittlejohn/jsonschema2pojo/). We're taking this databinding approach to
- ensure that the JSON Schemas can be reused to generate service datamodel objects for other languages and
- platforms (though this library will remain Java focused).
+ and REST service responses into JSON Schema documents. [These schema documents](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas)
+ are then used to generate Java POJO objects via [jsonschema2pojo library](https://github.com/joelittlejohn/jsonschema2pojo/). We're taking this databinding approach to
+ ensure that the JSON Schemas can be reused to generate service datamodel objects for other languages and platforms (though this library will remain Java focused).
 
  2. Create Service Proxies
 
@@ -62,10 +61,10 @@ That said, I'll try to stick to a few key principles along the way:
 
  `./gradlew clean build`
 
- This will cause the datamodel objects to be purged and regenerated in `src/gen/java`, also rerunning unit tests. It'll should
- build a jar file in the `build/libs` directory, making pulling it into in other projects possible. Note that many of the schemas
- are still being created and/or optimized and you should expect breaking changes for now. We'll create a stable branch and release
- once we get most of the basic service proxies created and also push a copy to the maven central repository.
+ This will cause the datamodel objects to be purged and regenerated in `src/gen/java`, also rerunning all unit tests. It should
+ build a jar file in the `build/libs` directory, making integration with other projects easier. Note that many of the schemas
+ are still being created and/or optimized and you should **expect frequent breaking changes for now**. We'll create a stable branch
+ and release to maven central once we get most of the basic service proxies created and tested.
 
 #License
 

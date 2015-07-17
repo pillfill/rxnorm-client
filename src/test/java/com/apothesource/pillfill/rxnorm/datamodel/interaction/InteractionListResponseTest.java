@@ -34,7 +34,6 @@ public class InteractionListResponseTest {
 
         FullInteractionType interaction = interactionGroup.getFullInteractionType().get(0);
 
-        System.out.println(gson.toJson(interaction));
         assertThat("First drug is Simvastatin 40 MG Oral Tablet [Zocor]", interaction.getMinConcept().get(0).getName(), Is.is("Simvastatin 40 MG Oral Tablet [Zocor]"));
         assertThat("Second drug is bosentan 125 MG Oral Tablet", interaction.getMinConcept().get(1).getName(), Is.is("bosentan 125 MG Oral Tablet"));
 

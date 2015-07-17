@@ -1,6 +1,6 @@
 .git
 .idea
 .*gradle*
-build*
+build/*
 *.iml
 src/gen*

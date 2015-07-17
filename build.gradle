@@ -1,0 +1,42 @@
+apply plugin: 'jsonschema2pojo'
+apply plugin: 'java'
+apply plugin: 'idea'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:0.4.13'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.3.1'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.hamcrest:hamcrest-junit:2.0.0.0'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java", "src/gen/java"]
+        }
+    }
+}
+
+
+// Each configuration is set to the default value
+jsonSchema2Pojo {
+    source = files("${sourceSets.main.output.resourcesDir}/schemas")
+    targetDirectory = file("src/gen/java")
+    sourceType = 'jsonSchema'
+    annotationStyle = 'gson'
+    removeOldOutput = true
+    includeToString = false
+    includeHashcodeAndEquals = false
+}

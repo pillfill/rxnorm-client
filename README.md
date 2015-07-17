@@ -20,25 +20,21 @@
 
 ##Strategy
 
- So this project was started to (slowly) build an RxNorm REST client, with development broken it into two separate efforts:
+ So this project was started to (slowly) build an RxNorm REST client with development broken it into two separate efforts:
 
  1. Define Separate Data Schemas
 
- Since we don't have a clean data schema to build off of, I'm transcribing the available information from the WSDL definition
- and REST service responses into JSON Schema documents. [These schema documents](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas)
- are then used to generate Java POJO objects via [jsonschema2pojo library](https://github.com/joelittlejohn/jsonschema2pojo/). We're taking this databinding approach to
- ensure that the JSON Schemas can be reused to generate service datamodel objects for other languages and platforms (though this library will remain Java focused).
+ I'm transcribing the available information from the WSDL definition and REST service responses into JSON Schema documents. [These schema documents](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas) are then used to generate Java POJO objects via [jsonschema2pojo library](https://github.com/joelittlejohn/jsonschema2pojo/). We're taking this databinding approach to ensure that the JSON Schemas can be reused to generate service datamodel objects for other languages and platforms (though this library will remain Java focused).
 
  2. Create Service Proxies
 
- Once we've made good progress on the data bindings, we'll also build include some lightweight service proxies to simplify interaction
- with the RxNav REST services. This should be the (relatively) easy part!
+ Once we've made good progress on the data bindings, we'll also build include some lightweight service proxies to simplify interaction with the RxNav REST services. This should be the (relatively) easy part!
 
 
-That said, I'll try to stick to a few key principles along the way:
+That said, we'll try to stick to a few principles along the way:
 
- * Minimize external runtime dependencies. Currently the Gson library is the only runtime dependency.
- * Keep focused on the data schemas and basic service proxy functionality.
+ * Minimize external runtime dependencies- Currently only the Gson library.
+ * Keep the library focused on the data schemas and basic service proxies.
  * Unit test using JSON documents captured from the live RxNav service.
  * Integration test using the real RxNav service endpoints (lightly though to not violate RxNav's ToS).
  * Depend on schemas to generate databinding objects in order to maximize reusability.

@@ -1,0 +1,16 @@
+{
+  "propConceptGroup": {
+    "propConcept": [
+      {
+        "propCategory": "CODES",
+        "propName": "NUI",
+        "propValue": "N0000007070"
+      },
+      {
+        "propCategory": "CODES",
+        "propName": "NUI",
+        "propValue": "N0000145914"
+      }
+    ]
+  }
+}

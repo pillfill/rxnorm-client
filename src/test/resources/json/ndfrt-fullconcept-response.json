@@ -23,7 +23,20 @@
       }
     ],
     "childConcepts": [
-      null
+      {
+        "concept": [
+          {
+            "conceptName": "ACETIC ACID/HYDROCORTISONE",
+            "conceptNui": "N0000020387",
+            "conceptKind": "DRUG_KIND"
+          },
+          {
+            "conceptName": "ANTI-INFECTIVE/ANTI-INFLAMMATORY COMBINATIONS,TOPICAL OTIC",
+            "conceptNui": "N0000029341",
+            "conceptKind": "DRUG_KIND"
+          }
+        ]
+      }
     ],
     "groupProperties": [
       {

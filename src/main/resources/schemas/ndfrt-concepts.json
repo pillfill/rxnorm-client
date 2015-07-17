@@ -1,16 +1,28 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions":{
+    "groupConcept":{
+      "type": "object",
+      "properties":{
+        "concept":{
+          "$ref":"ndfrt-core.json#/definitions/conceptList"
+        }
+      }
+    }
+  },
   "id": "http://apothesource.com/ndfrt-concepts",
   "type": "object",
-  "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.ConceptGroupResponse",
+  "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.GroupConceptResponse",
   "properties": {
     "groupConcepts": {
-      "$ref":"ndfrt.json#/definitions/conceptList"
+      "type": "array",
+      "items":{
+        "$ref":"#/definitions/groupConcept"
+      }
     },
     "responseType": {
-      "id": "responseType",
       "type": "object",
-      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.ConceptGroupResponse",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.GroupConceptResponseDetail",
       "properties": {
         "inputPropertyName": {
           "type": "string"

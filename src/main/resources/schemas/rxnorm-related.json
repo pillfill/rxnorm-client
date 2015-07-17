@@ -1,65 +1,56 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "/",
+  "definitions":{
+    "conceptProperties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rxcui": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "synonym": {
+            "type": "string"
+          },
+          "tty": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "suppress": {
+            "type": "string"
+          },
+          "umlscui": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
   "type": "object",
-  "javaType" : "com.apothesource.pillfill.rxnorm.datamodel.RxNormRelatedResponse",
+  "id": "http://apothesource.com/rxnorm/related",
+  "javaType" : "com.apothesource.pillfill.rxnorm.datamodel.RelatedGroupResponse",
   "properties": {
     "allRelatedGroup": {
-      "id": "allRelatedGroup",
       "type": "object",
       "properties": {
         "rxcui": {
-          "id": "rxcui",
           "type": "string"
         },
         "conceptGroup": {
-          "id": "conceptGroup",
           "type": "array",
           "items": {
-            "id": "15",
             "type": "object",
             "properties": {
               "tty": {
-                "id": "tty",
                 "type": "string"
               },
               "conceptProperties": {
-                "id": "conceptProperties",
-                "type": "array",
-                "items": {
-                  "id": "0",
-                  "type": "object",
-                  "properties": {
-                    "rxcui": {
-                      "id": "rxcui",
-                      "type": "string"
-                    },
-                    "name": {
-                      "id": "name",
-                      "type": "string"
-                    },
-                    "synonym": {
-                      "id": "synonym",
-                      "type": "string"
-                    },
-                    "tty": {
-                      "id": "tty",
-                      "type": "string"
-                    },
-                    "language": {
-                      "id": "language",
-                      "type": "string"
-                    },
-                    "suppress": {
-                      "id": "suppress",
-                      "type": "string"
-                    },
-                    "umlscui": {
-                      "id": "umlscui",
-                      "type": "string"
-                    }
-                  }
-                }
+                "$ref":"#/definitions/conceptProperties"
               }
             }
           }

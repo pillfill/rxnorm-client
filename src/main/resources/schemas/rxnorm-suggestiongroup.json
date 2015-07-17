@@ -1,26 +1,22 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "/",
+  "id": "http://apothesource.com/rxnorm/idgroup",
   "type": "object",
-  "javaType" : "com.apothesource.pillfill.rxnorm.datamodel.NdcsGroupResponse",
+  "javaType": "com.apothesource.pillfill.rxnorm.datamodel.SuggestionGroupResponse",
   "properties": {
-    "ndcGroup": {
-      "id": "ndcGroup",
+    "suggestionGroup": {
       "type": "object",
       "properties": {
-        "rxcui": {
-          "id": "rxcui",
+        "name": {
           "type": "string"
         },
-        "ndcList": {
-          "id": "ndcList",
+        "suggestionList": {
+          "javaType": "com.apothesource.pillfill.rxnorm.datamodel.SuggestionList",
           "type": "object",
           "properties": {
-            "ndc": {
-              "id": "ndc",
+            "suggestion": {
               "type": "array",
               "items": {
-                "id": "11",
                 "type": "string"
               }
             }

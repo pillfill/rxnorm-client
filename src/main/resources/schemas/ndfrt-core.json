@@ -7,15 +7,12 @@
       "type": "object",
       "properties": {
         "conceptKind": {
-          "id": "conceptKind",
           "type": "string"
         },
         "conceptName": {
-          "id": "conceptName",
           "type": "string"
         },
         "conceptNui": {
-          "id": "conceptNui",
           "type": "string"
         }
       }
@@ -43,22 +40,18 @@
           "id": "groupAssociations",
           "type": "array",
           "items": {
-            "id": "0",
             "type": "object",
             "properties": {
               "association": {
-                "id": "association",
                 "type": "array",
                 "items": {
-                  "id": "1",
                   "type": "object",
                   "properties": {
                     "associationName": {
-                      "id": "associationName",
                       "type": "string"
                     },
                     "concept": {
-                      "$ref": "#/definitions/concept"
+                      "$ref": "#/definitions/conceptList"
                     }
                   }
                 }
@@ -70,22 +63,17 @@
           "id": "groupProperties",
           "type": "array",
           "items": {
-            "id": "0",
             "type": "object",
             "properties": {
               "property": {
-                "id": "property",
                 "type": "array",
                 "items": {
-                  "id": "13",
                   "type": "object",
                   "properties": {
                     "propertyName": {
-                      "id": "propertyName",
                       "type": "string"
                     },
                     "propertyValue": {
-                      "id": "propertyValue",
                       "type": "string"
                     }
                   }
@@ -98,21 +86,17 @@
           "id": "groupRoles",
           "type": "array",
           "items": {
-            "id": "0",
             "type": "object",
             "properties": {
               "role": {
-                "id": "role",
                 "type": "array",
                 "items": {
-                  "id": "0",
                   "type": "object",
                   "properties": {
                     "concept": {
-                      "$ref": "#/definitions/concept"
+                      "$ref": "#/definitions/conceptList"
                     },
                     "roleName": {
-                      "id": "roleName",
                       "type": "string"
                     }
                   }
@@ -129,10 +113,9 @@
     "responseType": {
       "id": "responseType",
       "type": "object",
-      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.FullConceptResponse",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.FullConceptResponseDetail",
       "properties": {
         "inputNui1": {
-          "id": "inputNui1",
           "type": "string"
         }
       }

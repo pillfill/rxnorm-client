@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://apothesource.com/rxnorm/idgroup",
+  "type": "object",
+  "javaType": "com.apothesource.pillfill.rxnorm.datamodel.IdGroupResponse",
+  "properties": {
+    "idGroup": {
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.IdGroup",
+      "type": "object",
+      "properties": {
+        "idType": {
+          "javaType": "com.apothesource.pillfill.rxnorm.datamodel.IdGroupQueryType",
+          "type": "string",
+          "enum": ["AMPID","ANDA","ATC","GCN_SEQNO","GFC","GPPC","HIC_SEQN","LISTING_SEQ_NO","MESH","MMSL_CODE","NDA","NDC","NUI","SNOMEDCT","SPL_SET_ID","UMLSCUI","UNII_CODE","VUID"]
+        },
+        "id": {
+          "type": "string"
+        },
+        "rxnormId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

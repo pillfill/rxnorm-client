@@ -1,6 +1,5 @@
 apply plugin: 'jsonschema2pojo'
 apply plugin: 'java'
-apply plugin: 'idea'
 
 buildscript {
     repositories {

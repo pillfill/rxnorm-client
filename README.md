@@ -4,8 +4,7 @@
  services managed by the National Library of Medicine (NLM) &  National Institutes of Health (NIH). While we're unabashed fans of
  the services, please note this project **has no affiliation with NLM, NIH, or HHS**.
 
- Why?
- ----
+##Why?
 
  The RxNav API suite is a great drug information resource. It'd be a wonderful tool for many mHealth apps.
 
@@ -19,8 +18,7 @@
  but since the service bindings we're interested in appear to be Java→WSDL generated (Apache Axis?), they're not terribly helpful.
  In short, finding and using independent data schemas unfortunately doesn't appear to be an option.
 
- Strategy
- ----
+##Strategy
 
  So this project was started to (slowly) build an RxNorm REST client, with development broken it into two separate efforts:
 
@@ -37,7 +35,8 @@
  Once we've made good progress on the data bindings, we'll also build include some lightweight service proxies to simplify interaction
  with the RxNav REST services. This should be the (relatively) easy part!
 
- That said, I'll try to stick to a few key principles along the way:
+
+That said, I'll try to stick to a few key principles along the way:
 
  * Minimize external runtime dependencies. Currently the Gson library is the only runtime dependency.
  * Keep focused on the data schemas and basic service proxy functionality.
@@ -47,8 +46,7 @@
  * Try to provide a clear mapping to the [RxNav service documentation](http://rxnav.nlm.nih.gov/APIsOverview.html).
 
 
- Current Status
- -----
+##Current Status
 
  We have a subset of JSON schemas defined and unit tested for the RxNorm, NDFRT, and Interaction services.
 
@@ -58,8 +56,7 @@
  Want to contribute? Pull requests are certainly encouraged!
 
 
- Building and Use
- -----
+#Building and Use
 
  The project is gradle based:
 
@@ -70,8 +67,7 @@
  are still being created and/or optimized and you should expect breaking changes for now. We'll create a stable branch and release
  once we get most of the basic service proxies created and also push a copy to the maven central repository.
 
- License
- -----
+#License
 
  The MIT License (MIT)
 

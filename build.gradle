@@ -26,8 +26,20 @@ sourceSets {
             srcDirs = ["src/main/java", "src/gen/java"]
         }
     }
+    test{
+        java{
+            srcDirs = ["src/main/java", "src/gen/java", "src/test/java"]
+        }
+    }
 }
 
+test {
+    exclude '*/service/*'
+}
+
+task integrationTest(type: Test){
+    include '*/service/*'
+}
 
 // Each configuration is set to the default value
 jsonSchema2Pojo {

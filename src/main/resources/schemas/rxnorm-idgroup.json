@@ -9,7 +9,7 @@
       "type": "object",
       "properties": {
         "idType": {
-          "javaType": "com.apothesource.pillfill.rxnorm.datamodel.IdGroupQueryType",
+          "javaType": "com.apothesource.pillfill.rxnorm.datamodel.IdTypeNames",
           "type": "string",
           "enum": ["AMPID","ANDA","ATC","GCN_SEQNO","GFC","GPPC","HIC_SEQN","LISTING_SEQ_NO","MESH","MMSL_CODE","NDA","NDC","NUI","SNOMEDCT","SPL_SET_ID","UMLSCUI","UNII_CODE","VUID"]
         },

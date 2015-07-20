@@ -40,7 +40,7 @@ public class NdfrtFullConceptTest {
         GroupAssociation groupAssociation = groupAssociations.get(0);
 
         for(Association association : groupAssociation.getAssociation()) {
-            assertThat("Association name is Product_Component", association.getAssociationName(), Matchers.equalToIgnoringCase("Product_Component"));
+            assertThat("Association type is Product_Component", association.getAssociationName(), Matchers.is(AssociationNames.PRODUCT_COMPONENT));
             assertThat("Concepts are set in the association.", association.getConcept().size(), Matchers.equalTo(1));
         }
     }

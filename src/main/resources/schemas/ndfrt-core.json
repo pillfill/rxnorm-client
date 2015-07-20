@@ -7,7 +7,9 @@
       "type": "object",
       "properties": {
         "conceptKind": {
-          "type": "string"
+          "type": "string",
+          "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.KindNames",
+          "enum": ["DISEASE_KIND","DOSE_FORM_KIND","DRUG_KIND","INGREDIENT_KIND","MECHANISM_OF_ACTION_KIND","PHARMACOKINETICS_KIND","PHYSIOLOGIC_EFFECT_KIND","THERAPEUTIC_CATEGORY_KIND"]
         },
         "conceptName": {
           "type": "string"
@@ -18,11 +20,38 @@
       }
     },
     "conceptList": {
-      "id": "http://apothesource.com/ndfrt/conceptList",
+      "type": "object",
+      "properties": {
+        "concept":{
+          "$ref":"#/definitions/conceptArray"
+        }
+      }
+    },
+    "conceptArray": {
       "type": "array",
       "items": {
         "$ref":"#/definitions/concept"
       }
+    },
+    "roleNames":{
+      "type": "string",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.RoleNames",
+      "enum": ["CI_ChemClass {NDFRT}", "CI_MoA {NDFRT}", "CI_PE {NDFRT}", "CI_with {NDFRT}", "effect_may_be_inhibited_by {NDFRT}", "has_Chemical_Structure {FDASPL}", "has_Chemical_Structure {FMTSME}", "has_DoseForm {NDFRT}", "has_Ingredient {NDFRT}", "has_MoA {FDASPL}", "has_MoA {FMTSME}", "has_MoA {NDFRT}", "has_PE {FDASPL}", "has_PE {FMTSME}", "has_PE {NDFRT}", "has_PK {NDFRT}", "has_TC {FMTSME}", "has_active_metabolites {NDFRT}", "induces {NDFRT}", "may_diagnose {FMTSME}", "may_diagnose {NDFRT}", "may_prevent {FMTSME}", "may_prevent {NDFRT}", "may_treat {FMTSME}", "may_treat {NDFRT}", "metabolized_by {NDFRT}", "site_of_metabolism {NDFRT}"]
+    },
+    "idTypeNames": {
+      "type": "string",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.IdTypeNames",
+      "enum" : ["CODE", "MeSH_CUI", "MeSH_DUI", "NUI", "RxCUI", "UMLSCUI", "UNII", "VUID"]
+    },
+    "propertyNames":{
+      "type": "string",
+      "javaType" : "com.apothesource.pillfill.rxnorm.datamodel.ndf.PropertyNames",
+      "enum": ["Class_Code","Class_Description","code","CS_Federal_Schedule","Display_Name","FDA_UNII","kind","label","Level","MeSH_CUI","MeSH_Definition","MeSH_DUI","MeSH_Name","NUI","Print_Name","RxNorm_CUI","RxNorm_Name","SNOMED_Child_CID","SNOMED_CID","SNOMED_Parent_CID","Strength","Synonym","UMLS_CUI","Units","VA_National_Formulary_Name","Value_Set","VANDF_Record","VUID"]
+    },
+    "associationNames":{
+      "type": "string",
+      "javaType":"com.apothesource.pillfill.rxnorm.datamodel.ndf.AssociationNames",
+      "enum": ["Heading_Mapped_To","PharmClass_Member","Product_Component"]
     }
   },
   "id": "http://apothesource.com/ndfrt",
@@ -34,7 +63,16 @@
       "extends": {"$ref":"#definitions/concept"},
       "properties": {
         "childConcepts": {
-          "$ref": "#/definitions/conceptList"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/conceptList"
+          }
+        },
+        "parentConcepts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/conceptList"
+          }
         },
         "groupAssociations": {
           "id": "groupAssociations",
@@ -48,10 +86,10 @@
                   "type": "object",
                   "properties": {
                     "associationName": {
-                      "type": "string"
+                      "$ref": "#/definitions/associationNames"
                     },
                     "concept": {
-                      "$ref": "#/definitions/conceptList"
+                      "$ref": "#/definitions/conceptArray"
                     }
                   }
                 }
@@ -71,7 +109,7 @@
                   "type": "object",
                   "properties": {
                     "propertyName": {
-                      "type": "string"
+                      "$ref":"#/definitions/propertyNames"
                     },
                     "propertyValue": {
                       "type": "string"
@@ -94,19 +132,16 @@
                   "type": "object",
                   "properties": {
                     "concept": {
-                      "$ref": "#/definitions/conceptList"
+                      "$ref": "#/definitions/conceptArray"
                     },
                     "roleName": {
-                      "type": "string"
+                      "$ref":"#/definitions/roleNames"
                     }
                   }
                 }
               }
             }
           }
-        },
-        "parentConcepts": {
-          "$ref": "#/definitions/conceptList"
         }
       }
     },

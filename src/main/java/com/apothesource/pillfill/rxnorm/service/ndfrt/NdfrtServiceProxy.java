@@ -16,11 +16,15 @@ public class NdfrtServiceProxy implements NdfrtService {
     public static final String URL_BASE = "https://rxnav.nlm.nih.gov/REST/Ndfrt";
 
     public static final String URL_ID_TEMPLATE = URL_BASE + "/id.json?idType=%s&idString=%s";
-    public static final String URL_SEARCH_TEMPLATE = URL_BASE + "/search.son?conceptName=%s&kindName=%s";
+    public static final String URL_SEARCH_NAME_TEMPLATE = URL_BASE + "/search.son?conceptName=%s&kindName=%s";
     public static final String URL_ALL_TEMPLATE = URL_BASE + "/allInfo.json?nui=%s";
     public static final String URL_CHILDREN_TEMPLATE = URL_BASE + "/childConcepts.json?nui=%s&transitive=%s";
     public static final String URL_PARENTS_TEMPLATE = URL_BASE + "/parentConcepts.json?nui=%s&transitive=%s";
-
+    public static final String URL_SEARCH_PROPERTY_TEMPLATE = URL_BASE + "/concept.json?propertyName=%s&propertyValue=%s";
+    public static final String URL_PROPERTY_TEMPLATE = URL_BASE + "/properties.json?nui=%s&propertyName=%s";
+    public static final String URL_REVERSE_ROLE_TEMPLATE = URL_BASE + "/reverse.json?nui=%s&roleName=%s&transitive=%s";
+    public static final String URL_ROLE_TEMPLATE = URL_BASE + "/role.json?nui=%s&roleName=%s&transitive=%s";
+    public static final String URL_ASSOCIATION_TEMPLATE = URL_BASE + "/associations.json?nui=%s&associationName=%s";
     private final Gson gson = new Gson();
 
     @Override
@@ -40,7 +44,7 @@ public class NdfrtServiceProxy implements NdfrtService {
     @Override
     public GroupConceptResponse findConceptsByName(String conceptName, KindNames kindName) throws IOException {
         return getResponseFromNihServer(GroupConceptResponse.class,
-                URL_SEARCH_TEMPLATE,
+                URL_SEARCH_NAME_TEMPLATE,
                 new String[]{conceptName, kindName.toString()});
     }
 
@@ -59,28 +63,38 @@ public class NdfrtServiceProxy implements NdfrtService {
     }
 
     @Override
-    public GroupConceptResponse getConceptProperties(String nui, PropertyNames propertyName) throws IOException {
-        throw new UnsupportedOperationException("Not Implemented");
+    public GroupPropertyResponse getConceptProperties(String nui, PropertyNames propertyName) throws IOException {
+        return getResponseFromNihServer(GroupPropertyResponse.class,
+                URL_PROPERTY_TEMPLATE,
+                new String[]{nui, propertyName.toString()});
     }
 
     @Override
     public GroupConceptResponse getConceptsByProperty(PropertyNames propertyName, String propertyValue) throws IOException {
-        throw new UnsupportedOperationException("Not Implemented");
+        return getResponseFromNihServer(GroupConceptResponse.class,
+                URL_SEARCH_PROPERTY_TEMPLATE,
+                new String[]{propertyName.toString(), propertyValue});
     }
 
     @Override
-    public GroupConceptResponse getRelatedConceptsByReverseRole(String nui, RoleNames roleName, boolean transitive) {
-        throw new UnsupportedOperationException("Not Implemented");
+    public GroupConceptResponse getRelatedConceptsByReverseRole(String nui, RoleNames roleName, Boolean transitive) throws IOException{
+        return getResponseFromNihServer(GroupConceptResponse.class,
+                URL_REVERSE_ROLE_TEMPLATE,
+                new String[]{nui, roleName.toString(), transitive.toString()});
     }
 
     @Override
-    public GroupConceptResponse getRelatedConceptsByRole(String nui, RoleNames roleName, boolean transitive) {
-        throw new UnsupportedOperationException("Not Implemented");
+    public GroupConceptResponse getRelatedConceptsByRole(String nui, RoleNames roleName, Boolean transitive) throws IOException {
+        return getResponseFromNihServer(GroupConceptResponse.class,
+                URL_ROLE_TEMPLATE,
+                new String[]{nui, roleName.toString(), transitive.toString()});
     }
 
     @Override
-    public GroupConceptResponse getRelatedConceptsByAssociation(String nui, AssociationNames assocName) {
-        throw new UnsupportedOperationException("Not Implemented");
+    public GroupAssociationResponse getRelatedConceptsByAssociation(String nui, AssociationNames assocName) throws IOException {
+        return getResponseFromNihServer(GroupAssociationResponse.class,
+                URL_ASSOCIATION_TEMPLATE,
+                new String[]{nui, assocName.toString()});
     }
 
     @Override
@@ -102,7 +116,7 @@ public class NdfrtServiceProxy implements NdfrtService {
         for(int i = 0; i < parameters.length; i++){
             parameters[i] = URLEncoder.encode(parameters[i], "UTF-8");
         }
-        String urlString = String.format(template, parameters);
+        String urlString = String.format(template, (Object[]) parameters);
         return getResponseFromNihServer(new URL(urlString), classType);
     }
     protected <T> T getResponseFromNihServer(URL url, Class<T> classType) throws IOException{

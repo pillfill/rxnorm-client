@@ -39,6 +39,7 @@ public class NdfrtServiceProxyTest {
     }
 
     @Test
+    @Category(ServiceIntegrationTest.class)
     public void testGetAllInfo() throws IOException{
         FullConceptResponse response = proxy.getAllInfo("N0000146307");
         assertThat("Search nui is N0000146307",response.getResponseType().getInputNui1(),Matchers.is("N0000146307"));
@@ -50,15 +51,71 @@ public class NdfrtServiceProxyTest {
     }
 
     @Test
+    @Category(ServiceIntegrationTest.class)
     public void testGetChildConcepts() throws IOException{
         GroupConceptResponse response = proxy.getChildConcepts("N0000022046", true);
         GroupConcept conceptGroup = response.getGroupConcepts().get(0);
         assertThat("Concept N0000022046 has five child concepts.", conceptGroup.getConcept().size(), Matchers.is(5));
     }
     @Test
+    @Category(ServiceIntegrationTest.class)
     public void testGetParentConcepts() throws IOException{
         GroupConceptResponse response = proxy.getParentConcepts("N0000153235", false);
         GroupConcept conceptGroup = response.getGroupConcepts().get(0);
         assertThat("Concept N0000153235 has two parent concepts.", conceptGroup.getConcept().size(), Matchers.is(2));
     }
+    @Test
+    @Category(ServiceIntegrationTest.class)
+    public void testGetConceptByProperty() throws IOException{
+        GroupConceptResponse response = proxy.getConceptsByProperty(PropertyNames.RX_NORM_CUI, "161");
+        GroupConcept conceptGroup = response.getGroupConcepts().get(0);
+
+        assertThat("We found two concepts when querying RXNORM_CUI 161", conceptGroup.getConcept().size(), Matchers.is(2));
+    }
+
+    @Test
+    @Category(ServiceIntegrationTest.class)
+    public void testGetGroupProperties() throws IOException{
+        GroupPropertyResponse properties = proxy.getConceptProperties("N0000153235", PropertyNames.UMLS_CUI);
+        GroupProperty groupProperty = properties.getGroupProperties().get(0);
+        assertThat("Concept has UMLS_CUI",groupProperty.getProperty().get(0).getPropertyName() ,Matchers.is(PropertyNames.UMLS_CUI));
+        assertThat("Concept has UMLS_CUI ID: C0690746",groupProperty.getProperty().get(0).getPropertyValue() ,Matchers.is("C0690746"));
+    }
+
+    @Test
+    @Category(ServiceIntegrationTest.class)
+    public void testGetReverseRole() throws IOException{
+        GroupConceptResponse concepts = proxy.getRelatedConceptsByReverseRole("N0000000478", RoleNames.MAY_TREAT_NDFRT, false);
+
+        GroupConcept gc = concepts.getGroupConcepts().get(0);
+        assertThat("N0000000478 has 5 drug with a MAY_TREAT role", gc.getConcept().size(), Matchers.is(5));
+    }
+
+    @Test
+    @Category(ServiceIntegrationTest.class)
+    public void testGetRole() throws IOException{
+        GroupConceptResponse concepts = proxy.getRelatedConceptsByRole("N0000145914", RoleNames.HAS_PE_NDFRT, false);
+        GroupConcept gc = concepts.getGroupConcepts().get(0);
+
+        Concept concept = gc.getConcept().get(0);
+        assertThat("N0000145914 has a PE of Decreased Organized Electrical Activity", concept.getConceptName(), Matchers.is("Decreased Organized Electrical Activity"));
+        assertThat("N0000145914 has a PE with NUI N0000008768", concept.getConceptNui(), Matchers.is("N0000008768"));
+        assertThat("N0000145914 has a PE with Kind PHYSIOLOGIC_EFFECT_KIND", concept.getConceptKind(), Matchers.is(KindNames.PHYSIOLOGIC_EFFECT_KIND));
+    }
+
+    @Test
+    @Category(ServiceIntegrationTest.class)
+    public void testGetAssociation() throws IOException{
+        GroupAssociationResponse groupAssociationResponse = proxy.getRelatedConceptsByAssociation("N0000152900", AssociationNames.PRODUCT_COMPONENT);
+        GroupAssociation ga = groupAssociationResponse.getGroupAssociations().get(0);
+
+        assertThat("groupAssociationResponse inputAssociation is PRODUCT_COMPONENT", groupAssociationResponse.getResponseType().getInputAssociationName(), Matchers.is(AssociationNames.PRODUCT_COMPONENT));
+        assertThat("N0000152900 has 2 product component associations", ga.getAssociation().size(), Matchers.is(2));
+
+        for(Association association : ga.getAssociation()){
+            Concept associationConcept = association.getConcept().get(0);
+            assertThat("N0000152900 product component is in the set [N0000145831,N0000146291]", associationConcept.getConceptNui(), Matchers.in(new String[]{"N0000145831","N0000146291"}));
+        }
+    }
+
 }

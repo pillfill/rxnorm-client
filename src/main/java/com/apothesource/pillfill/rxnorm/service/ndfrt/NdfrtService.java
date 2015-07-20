@@ -100,7 +100,7 @@ public interface NdfrtService {
      * @return The named properties associated with this concept
      * @throws IOException if errors occur communicating with the service
      */
-    GroupConceptResponse getConceptProperties(String nui, PropertyNames propertyName) throws IOException;
+    GroupPropertyResponse getConceptProperties(String nui, PropertyNames propertyName) throws IOException;
 
     /**
      * Get the concepts that contain the specified property name and value
@@ -130,7 +130,7 @@ public interface NdfrtService {
      *                   concepts are returned.
      * @return The list of concepts
      */
-    GroupConceptResponse getRelatedConceptsByReverseRole(String nui, RoleNames roleName, boolean transitive);
+    GroupConceptResponse getRelatedConceptsByReverseRole(String nui, RoleNames roleName, Boolean transitive) throws IOException;
 
     /**
      * Get the concepts related to the specified concept by role. In NDF-RT, the relations between two concepts are
@@ -149,7 +149,7 @@ public interface NdfrtService {
      *                   are returned.
      * @return The list of concepts
      */
-    GroupConceptResponse getRelatedConceptsByRole(String nui, RoleNames roleName, boolean transitive);
+    GroupConceptResponse getRelatedConceptsByRole(String nui, RoleNames roleName, Boolean transitive) throws IOException;
 
     /**
      * Get the associations for a specified concept
@@ -160,7 +160,7 @@ public interface NdfrtService {
      * @return An array of association structures. Each association structure contains: Association name, Concept
      * identifier (NUI) of the object of the association
      */
-    GroupConceptResponse getRelatedConceptsByAssociation(String nui, AssociationNames assocName);
+    GroupAssociationResponse getRelatedConceptsByAssociation(String nui, AssociationNames assocName) throws IOException;
 
     /**
      * Get the FDA Established Pharmacologic classes (EPC) for a specified drug. The specified drug must be an NDF-RT

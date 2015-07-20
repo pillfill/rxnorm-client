@@ -1,45 +1,84 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://apothesource.com/ndfrt-concepts",
+  "id": "http://apothesource.com/ndfrt/groupResponses",
+  "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.GroupResponseBase",
   "type": "object",
-  "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.GroupConceptResponse",
   "properties": {
-    "groupConcepts": {
-      "type": "array",
-      "items":{
-        "$ref":"ndfrt-core.json#/definitions/conceptList"
+    "baseGroupResponse": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.BaseGroupResponse",
+      "properties": {
+        "responseType": {
+          "type": "object",
+          "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.BaseResponseQuery",
+          "properties": {
+            "inputConceptName": {
+              "type": "string"
+            },
+            "inputKindName": {
+              "$ref": "ndfrt-core.json#/definitions/concept/properties/conceptKind"
+            },
+            "inputPropertyName": {
+              "$ref": "ndfrt-core.json#/definitions/propertyNames"
+            },
+            "inputAssociationName": {
+              "$ref": "ndfrt-core.json#/definitions/associationNames"
+            },
+            "inputRoleName": {
+              "$ref": "ndfrt-core.json#/definitions/roleNames"
+            },
+            "inputTransitiive": {
+              "type": "boolean"
+            },
+            "inputIdType": {
+              "$ref": "ndfrt-core.json#/definitions/idTypeNames"
+            },
+            "inputIdString": {
+              "type": "string"
+            },
+            "inputPropertyValue": {
+              "type": "string"
+            }
+          }
+        }
       }
     },
-    "responseType": {
+    "groupConceptsResponse": {
       "type": "object",
-      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.GroupConceptResponseDetail",
-      "properties": {
-        "inputConceptName": {
-          "type": "string"
-        },
-        "inputKindName": {
-          "$ref": "ndfrt-core.json#/definitions/concept/properties/conceptKind"
-        },
-        "inputPropertyName": {
-          "$ref": "ndfrt-core.json#/definitions/propertyNames"
-        },
-        "inputAssociationName":{
-          "$ref": "ndfrt-core.json#/definitions/associationNames"
-        },
-        "inputRoleName": {
-          "$ref": "ndfrt-core.json#/definitions/roleNames"
-        },
-        "inputTransitiive": {
-          "type": "boolean"
-        },
-        "inputIdType": {
-          "$ref": "ndfrt-core.json#/definitions/idTypeNames"
-        },
-        "inputIdString": {
-          "type": "string"
-        },
-        "inputPropertyValue": {
-          "type": "string"
+      "extends": {"$ref":"#/properties/baseGroupResponse"},
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.GroupConceptResponse",
+      "properties":{
+        "groupConcepts": {
+          "type": "array",
+          "items": {
+            "$ref": "ndfrt-core.json#/definitions/conceptList"
+          }
+        }
+      }
+    },
+    "groupPropertiesResponse": {
+      "type": "object",
+      "extends": {"$ref":"#/properties/baseGroupResponse"},
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.GroupPropertyResponse",
+      "properties":{
+        "groupProperties": {
+          "type": "array",
+          "items": {
+            "$ref": "ndfrt-core.json#/definitions/groupPropertyList"
+          }
+        }
+      }
+    },
+    "groupAssociationResponse": {
+      "type": "object",
+      "extends": {"$ref":"#/properties/baseGroupResponse"},
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.GroupAssociationResponse",
+      "properties":{
+        "groupAssociations": {
+          "type": "array",
+          "items": {
+            "$ref": "ndfrt-core.json#/definitions/groupAssociationList"
+          }
         }
       }
     }

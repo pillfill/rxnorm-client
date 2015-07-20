@@ -33,6 +33,44 @@
         "$ref":"#/definitions/concept"
       }
     },
+    "groupPropertyList":{
+      "type": "object",
+      "properties": {
+        "property": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "propertyName": {
+                "$ref":"#/definitions/propertyNames"
+              },
+              "propertyValue": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "groupAssociationList":{
+      "type": "object",
+      "properties": {
+        "association": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "associationName": {
+                "$ref": "#/definitions/associationNames"
+              },
+              "concept": {
+                "$ref": "#/definitions/conceptArray"
+              }
+            }
+          }
+        }
+      }
+    },
     "roleNames":{
       "type": "string",
       "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.RoleNames",
@@ -78,46 +116,14 @@
           "id": "groupAssociations",
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "association": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "associationName": {
-                      "$ref": "#/definitions/associationNames"
-                    },
-                    "concept": {
-                      "$ref": "#/definitions/conceptArray"
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/definitions/groupAssociationList"
           }
         },
         "groupProperties": {
           "id": "groupProperties",
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "property": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "propertyName": {
-                      "$ref":"#/definitions/propertyNames"
-                    },
-                    "propertyValue": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/definitions/groupPropertyList"
           }
         },
         "groupRoles": {

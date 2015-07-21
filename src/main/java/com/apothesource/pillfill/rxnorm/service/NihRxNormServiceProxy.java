@@ -27,6 +27,7 @@ public class NihRxNormServiceProxy implements RxNormService{
     public static final String URL_GET_RELATED_BY_REL_TEMPLATE = URL_BASE + "/rxcui/%s/related.json?rela=%s";
     public static final String URL_GET_NDCS_TEMPLATE = URL_BASE + "/rxcui/%s/ndcs.json";
     public static final String URL_GET_BRAND_ING_TEMPLATE = URL_BASE + "/brands.json?ingredientids=%s";
+
     private final Gson gson = new Gson();
 
     @Override

@@ -2,7 +2,6 @@ package com.apothesource.pillfill.rxnorm.service.ndfrt;
 
 import com.apothesource.pillfill.rxnorm.datamodel.ndf.*;
 import com.google.gson.Gson;
-import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
@@ -14,7 +13,9 @@ import java.net.URLEncoder;
 import java.util.List;
 
 /**
- * Created by Michael on 7/17/15.
+ * Default implementation of {@link NdfrtService} backed by the live NIH services
+ *
+ * Created by Michael Ramirez (michael@pillfill.com) on 7/17/15.
  */
 public class NdfrtServiceProxy implements NdfrtService {
     public static final String URL_BASE = "https://rxnav.nlm.nih.gov/REST/Ndfrt";
@@ -133,6 +134,10 @@ public class NdfrtServiceProxy implements NdfrtService {
         );
     }
 
+    /**
+     * Gnarly stream parsing of concept list.
+     * TODO: Create a cleaner, reusable stream parser
+     */
     @Override
     public void getAllConceptsByKind(List<KindNames> kinds, ConceptHandler handler){
         StringBuilder kindsParam = new StringBuilder();

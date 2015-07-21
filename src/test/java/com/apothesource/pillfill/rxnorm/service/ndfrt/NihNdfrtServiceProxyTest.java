@@ -8,7 +8,6 @@ import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -16,8 +15,8 @@ import static org.junit.Assert.*;
 /**
  * Created by Michael Ramirez on 7/17/15.
  */
-public class NdfrtServiceProxyTest {
-    NdfrtServiceProxy proxy = new NdfrtServiceProxy();
+public class NihNdfrtServiceProxyTest {
+    NihNdfrtServiceProxy proxy = new NihNdfrtServiceProxy();
 
     @Test
     @Category(ServiceIntegrationTest.class)

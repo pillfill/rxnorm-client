@@ -43,8 +43,8 @@ Nothing too ambitious, but we'll try to stick to a few principles along the way:
 
  * NdfrtService ([NIH Documentation](http://rxnav.nlm.nih.gov/NdfrtAPIs.html))
   * Service Interface: [NdfrtService](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtService.java)
-  * Default Implementation: [NdfrtServiceProxy](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtServiceProxy.java)
-  * Integration Tests: [NdfrtServiceProxy](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtServiceProxyTest.java)
+  * Default Implementation: [NdfrtServiceProxy](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NihNdfrtServiceProxy.java)
+  * Integration Tests: [NdfrtServiceProxy](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NihNdfrtServiceProxyTest.java)
 
  TODO:
  * `RxNorm Service`
@@ -74,7 +74,7 @@ Nothing too ambitious, but we'll try to stick to a few principles along the way:
   //Begin interrogation of the SULINDAC drug concept
  ```
 
- See the [NIH NdfrtService proxy integration tests](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtServiceProxyTest.java)
+ See the [NIH NdfrtService proxy integration tests](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NihNdfrtServiceProxyTest.java)
  for more examples.
 
 ##Disclaimer

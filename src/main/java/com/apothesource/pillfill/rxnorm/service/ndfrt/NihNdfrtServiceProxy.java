@@ -13,11 +13,12 @@ import java.net.URLEncoder;
 import java.util.List;
 
 /**
- * Default implementation of {@link NdfrtService} backed by the live NIH services
+ * Default implementation of {@link NdfrtService} backed by the live NIH services.
+ * http://rxnav.nlm.nih.gov/NdfrtAPIs.html#
  *
  * Created by Michael Ramirez (michael@pillfill.com) on 7/17/15.
  */
-public class NdfrtServiceProxy implements NdfrtService {
+public class NihNdfrtServiceProxy implements NdfrtService {
     public static final String URL_BASE = "https://rxnav.nlm.nih.gov/REST/Ndfrt";
 
     public static final String URL_ALL_CONCEPTS_TEMPLATE = URL_BASE + "/allconcepts.json?kind=%s";

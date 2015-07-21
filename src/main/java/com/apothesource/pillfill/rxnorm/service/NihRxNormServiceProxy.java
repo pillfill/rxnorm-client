@@ -52,6 +52,7 @@ public class NihRxNormServiceProxy implements RxNormService{
                 new String[]{id});
     }
 
+    @Override
     public ApproximateGroupResponse getApproximateMatch(String id, int maxEntries) throws IOException{
         return getResponseFromNihServer(ApproximateGroupResponse.class,
                 URL_FIND_APPROXIMATE_TEMPLATE,

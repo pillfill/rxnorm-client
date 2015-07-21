@@ -1,10 +1,10 @@
-#PillFill RxNorm Client
+# PillFill RxNorm Client
 
 [![Build Status](https://travis-ci.org/pillfill/rxnorm-client.svg?branch=master)](https://travis-ci.org/pillfill/rxnorm-client)
 
  This project is working to create a lightweight REST Java/Android client library for the [RxNav APIs](http://rxnav.nlm.nih.gov/APIsOverview.html), services managed by the National Library of Medicine (NLM) &  National Institutes of Health (NIH). While we're unabashed fans of the services, please note this project **has no affiliation with NLM, NIH, or HHS**.
 
-##Why?
+## Why?
 
  The RxNav API suite is a great drug information resource. It'd be a wonderful tool for many mHealth apps.
 
@@ -12,7 +12,7 @@
 
  As far as we're aware, there is no separate schema for the service objects since [everything is baked into WSDL definitions](http://rxnav.nlm.nih.gov/RxNormDBService.xml). There are [database schema/RRF files](http://www.nlm.nih.gov/research/umls/rxnorm/docs/rxnormfiles.html) available, but aren't terribly helpful since the service bindings we'd need interested in all appear to be defined in code and Java→WSDL generated.
 
-##Strategy
+## Strategy
 
  This project was started to (slowly) build an RxNorm REST client with development broken it into two separate efforts:
 
@@ -25,7 +25,7 @@
  We also plan to build some lightweight service proxies modeled after the RxNav service documentation. The mapping between APIs and service objects isn't obvious, so the service proxies should reduce some of that confusion.
 
 
-##Goals
+## Goals
 
 Nothing too ambitious, but we'll try to stick to a few principles along the way:
 
@@ -37,11 +37,11 @@ Nothing too ambitious, but we'll try to stick to a few principles along the way:
  * Try to provide a clear mapping to the [RxNav service documentation](http://rxnav.nlm.nih.gov/APIsOverview.html).
 
 
-##Current Status
+## Current Status
 
  We have a subset of JSON schemas defined and unit tested for the [RxNorm, NDFRT, and Interaction](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas) services against static JSON content.
 
-###Implemented Service Clients:
+### Implemented Service Clients:
 
  * NdfrtService ([NIH Documentation](http://rxnav.nlm.nih.gov/NdfrtAPIs.html))
   * Service Interface: [NdfrtService](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtService.java)
@@ -62,17 +62,41 @@ Nothing too ambitious, but we'll try to stick to a few principles along the way:
 Want to contribute? Pull requests are encouraged!
 
 
-##Building the RxNorm Library
+## Setup
+
+Getting started with the library is pretty straight forward. You can add it as a dependency to your project, or build it
+directly from source.
+
+### Add Dependency
+
+Maven-Based Configurations:
+
+```XML
+<dependency>
+  <groupId>com.apothesource.pillfill</groupId>
+  <artifactId>rxnorm-client</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
+Gradle-Based Configurations:
+
+```Groovy
+compile 'com.apothesource.pillfill:rxnorm-client:1.0.0'
+```
+
+### Build From Source
 
  The project is gradle based:
 
  `./gradlew clean build`
 
- This will cause the datamodel objects to be purged and regenerated in `src/gen/java`, also rerunning all unit tests. It should build a jar file in the `build/libs` directory, making integration with other projects easier. Note that many of the schemas are still being created and/or optimized and you should **expect frequent breaking changes for now**. We'll create a stable branch and release to maven central once we get most of the basic service proxies created and tested. You can also run the integration tests like so:
+ This will cause the datamodel objects to be purged and regenerated in `src/gen/java`, also rerunning all unit tests. You
+ can also run the integration tests like so:
 
  `./gradlew clean build integrationTest`
 
-##Using the RxNorm Library
+## Using the RxNorm Library
 
  Most users will want to just use one of the services. You can do so like this:
 
@@ -86,11 +110,11 @@ Want to contribute? Pull requests are encouraged!
  See the [NIH NdfrtService proxy integration tests](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NihNdfrtServiceProxyTest.java)
  for more examples.
 
-##Disclaimer
+## Disclaimer
 
  This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product.
 
-##License
+## License
 
  The MIT License (MIT)
 

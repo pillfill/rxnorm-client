@@ -24,8 +24,9 @@ import java.util.List;
  {@link #getRelatedConceptsByRole}          Get the concepts related to the specified concept by role
  {@link #getVAClassMembers}                 Get the members of a VA class
  {@link #getVAClassOfConcept}               Get the VA class for a specified concept
+ {@link #getNdfrtVersion}                   Get the version of the NDF-RT data set
 
- Bulk Concept Queries (Not Implemented):
+ Bulk Concept Queries:
  {@link #getAllConceptsByKind}              Get concept information for specified kinds.
 
  List Type Queries (Not Implemented Since Values are Included in Related Enum Objects):
@@ -35,7 +36,7 @@ import java.util.List;
  {@link PropertyNames}      Get the property names in the NDF-RT data set
  {@link RoleNames}          Get the role names in the NDF-RT data set
 
- #                  /version	        Get the version of the NDF-RT data set
+
 
  *
  *

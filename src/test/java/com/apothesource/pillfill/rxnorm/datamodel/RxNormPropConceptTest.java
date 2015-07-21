@@ -29,7 +29,7 @@ public class RxNormPropConceptTest {
 
         PropConceptGroup group = response.getPropConceptGroup();
         for(PropConcept concept : group.getPropConcept()){
-            assertThat("Concept category is CODES", concept.getPropCategory(), Matchers.equalToIgnoringCase("CODES"));
+            assertThat("Concept category is CODES", concept.getPropCategory(), Matchers.is(PropCategoryNames.CODES));
             assertThat("Concept name is NUI", concept.getPropName(), Matchers.equalToIgnoringCase("NUI"));
             assertThat("Concept value is either N0000145914 or N0000007070", concept.getPropValue(), Matchers.in(new String[]{"N0000145914", "N0000007070"}));
         }

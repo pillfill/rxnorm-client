@@ -43,11 +43,15 @@ Nothing too ambitious, but we'll try to stick to a few principles along the way:
 
  * NdfrtService ([NIH Documentation](http://rxnav.nlm.nih.gov/NdfrtAPIs.html))
   * Service Interface: [NdfrtService](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtService.java)
-  * Default Implementation: [NdfrtServiceProxy](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NihNdfrtServiceProxy.java)
-  * Integration Tests: [NdfrtServiceProxy](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NihNdfrtServiceProxyTest.java)
+  * Default Implementation: [NihNdfrtServiceProxy](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NihNdfrtServiceProxy.java)
+  * Integration Tests: [NihNdfrtServiceProxy](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NihNdfrtServiceProxyTest.java)
+
+ * RxNormService ([NIH Documentation](http://rxnav.nlm.nih.gov/RxNormAPIs.html))
+  * Service Interface: [RxNormService](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/RxNormService.java)
+  * Default Implementation: [NihRxNormServiceProxy](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/NihRxNormServiceProxy.java)
+  * Integration Tests: [NihRxNormServiceProxyTests](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/NihRxNormServiceProxyTest.java)
 
  TODO:
- * `RxNorm Service`
  * `Interaction Service`
 
  Want to contribute? Pull requests are encouraged!

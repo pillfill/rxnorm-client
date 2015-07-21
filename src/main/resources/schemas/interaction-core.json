@@ -1,27 +1,11 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "minConceptItem": {
-      "id": "http://apothesource.com/rxnorm/minConceptItem",
-      "type": "object",
-      "properties": {
-        "rxcui": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "tty": {
-          "type": "string"
-        }
-      }
-    },
     "interactionConcept": {
-      "id": "http://apothesource.com/rxnorm/interaction/interactionConcept",
       "type": "object",
       "properties": {
         "minConceptItem": {
-          "$ref": "#/definitions/minConceptItem"
+          "$ref": "rxnorm-core.json#/definitions/minConceptItem"
         },
         "sourceConceptItem": {
           "$ref": "#/definitions/sourceConceptItem"
@@ -29,8 +13,7 @@
       }
     },
     "sourceConceptItem": {
-      "id": "http://apothesource.com/rxnorm/sourceConceptItem",
-      "extends": {"$ref":"#/definitions/minConceptItem"},
+      "extends": {"$ref":"rxnorm-core.json#/definitions/minConceptItem"},
       "properties": {
         "url": {
           "type": "string"
@@ -48,7 +31,7 @@
           "type": "string"
         },
         "userInput": {
-          "$ref": "rxnorm-common.json#/definitions/userInput"
+          "$ref": "interaction-core.json#/definitions/userInput"
         }
       }
     },
@@ -61,7 +44,7 @@
             "type": "string"
           },
           "minConceptItem": {
-            "$ref": "#definitions/minConceptItem"
+            "$ref": "rxnorm-core.json#definitions/minConceptItem"
           },
           "interactionPair": {
             "$ref": "#definitions/interactionPair"
@@ -80,7 +63,7 @@
           "minConcept": {
             "type": "array",
             "items": {
-              "$ref": "#definitions/minConceptItem"
+              "$ref": "rxnorm-core.json#definitions/minConceptItem"
             }
           },
           "interactionPair": {

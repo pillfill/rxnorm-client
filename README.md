@@ -40,25 +40,40 @@ Nothing too ambitious, but we'll try to stick to a few principles along the way:
  We have a subset of JSON schemas defined and unit tested for the [RxNorm, NDFRT, and Interaction](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas) services.
 
  The [NDFRT Service](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtService.java)
- interface has been created and its [proxy implementation](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtServiceProxy.java)
- defined with [JUnit tests](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtServiceProxyTest.java)
+ interface has been created along with its [default implementation backed by the NIH services](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtServiceProxy.java).
+ It also includes [Integration tests](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtServiceProxyTest.java)
  to show basic functionality and implementation strategy.
 
  TODO:
- `RxNorm Service`
- `Interaction Service`
-
+ * `RxNorm Service`
+ * `Interaction Service`
 
  Want to contribute? Pull requests are encouraged!
 
 
-##Building and Use
+##Building the RxNorm Library
 
  The project is gradle based:
 
  `./gradlew clean build`
 
- This will cause the datamodel objects to be purged and regenerated in `src/gen/java`, also rerunning all unit tests. It should build a jar file in the `build/libs` directory, making integration with other projects easier. Note that many of the schemas are still being created and/or optimized and you should **expect frequent breaking changes for now**. We'll create a stable branch and release to maven central once we get most of the basic service proxies created and tested.
+ This will cause the datamodel objects to be purged and regenerated in `src/gen/java`, also rerunning all unit tests. It should build a jar file in the `build/libs` directory, making integration with other projects easier. Note that many of the schemas are still being created and/or optimized and you should **expect frequent breaking changes for now**. We'll create a stable branch and release to maven central once we get most of the basic service proxies created and tested. You can also run the integration tests like so:
+
+ `./gradlew clean build integrationTest`
+
+##Using the RxNorm Library
+
+ Most users will want to just use one of the services. You can do so like this:
+
+ ```Java
+  NdfrtService serviceProxy = new NdfrtServiceProxy();
+  FullConceptResponse response = serviceProxy.getAllInfo("N0000146307");
+
+  //Begin interrogation of the SULINDAC drug concept
+ ```
+
+ See the [NIH NdfrtService proxy integration tests](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtServiceProxyTest.java)
+ for more examples.
 
 ##Disclaimer
 

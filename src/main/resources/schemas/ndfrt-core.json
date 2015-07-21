@@ -21,6 +21,7 @@
     },
     "conceptList": {
       "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.GroupConcept",
       "properties": {
         "concept":{
           "$ref":"#/definitions/conceptArray"

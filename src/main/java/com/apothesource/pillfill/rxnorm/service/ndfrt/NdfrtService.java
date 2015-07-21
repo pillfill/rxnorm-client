@@ -2,6 +2,7 @@ package com.apothesource.pillfill.rxnorm.service.ndfrt;
 import com.apothesource.pillfill.rxnorm.datamodel.ndf.*;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  Services to find and retrieve NDF-RT Concepts Some of the parameters & ordering in this interface are intentionally inconsistent to match the NIH documentation.
@@ -25,7 +26,7 @@ import java.io.IOException;
  {@link #getVAClassOfConcept}               Get the VA class for a specified concept
 
  Bulk Concept Queries (Not Implemented):
- #                  /allconcepts	    Get concept information for specified kinds.
+ {@link #getAllConceptsByKind}              Get concept information for specified kinds.
 
  List Type Queries (Not Implemented Since Values are Included in Related Enum Objects):
  {@link AssociationNames}   Get the association names
@@ -169,7 +170,7 @@ public interface NdfrtService {
      * @param nui the NDF-RT identifier
      * @return a list of concepts in this class
      */
-    GroupConceptResponse getEPCClassOfConcept(String nui);
+    GroupConceptResponse getEPCClassOfConcept(String nui) throws IOException;
 
     /**
      * Get the members of a VA class
@@ -177,7 +178,7 @@ public interface NdfrtService {
      * @param nui the NDF-RT identifier
      * @return a list of concepts in this class
      */
-    GroupConceptResponse getVAClassMembers(String nui);
+    GroupConceptResponse getVAClassMembers(String nui) throws IOException;
 
     /**
      * Get the VA class of a specified concept
@@ -185,5 +186,13 @@ public interface NdfrtService {
      * @param nui the NDF-RT identifier. The identifier must be for a concept that is a VA product (Level = "VA Product")
      * @return a list of concepts in this class
      */
-    GroupConceptResponse getVAClassOfConcept(String nui);
+    ConceptListResponse getVAClassOfConcept(String nui) throws IOException;
+
+    /**
+     * Get concept information for specified kinds.
+     *
+     * @param kindList one or more Kind identifiers. See /kindList example for valid values.
+     * @param handler A handler to receive concepts as they are retrieved (to minimize memory overhead vs. a single list object)
+     */
+    void getAllConceptsByKind(List<KindNames> kindList, ConceptHandler handler);
 }

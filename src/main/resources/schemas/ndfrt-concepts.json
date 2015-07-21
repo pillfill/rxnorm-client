@@ -56,6 +56,16 @@
         }
       }
     },
+    "conceptListResponse": {
+      "type": "object",
+      "extends": {"$ref":"#/properties/baseGroupResponse"},
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.ConceptListResponse",
+      "properties":{
+        "concept":{
+          "$ref":"ndfrt-core.json#/definitions/conceptArray"
+        }
+      }
+    },
     "groupPropertiesResponse": {
       "type": "object",
       "extends": {"$ref":"#/properties/baseGroupResponse"},

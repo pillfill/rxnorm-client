@@ -2,12 +2,16 @@ package com.apothesource.pillfill.rxnorm.service.ndfrt;
 
 import com.apothesource.pillfill.rxnorm.datamodel.ndf.*;
 import com.google.gson.Gson;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
 
 /**
  * Created by Michael on 7/17/15.
@@ -15,6 +19,7 @@ import java.net.URLEncoder;
 public class NdfrtServiceProxy implements NdfrtService {
     public static final String URL_BASE = "https://rxnav.nlm.nih.gov/REST/Ndfrt";
 
+    public static final String URL_ALL_CONCEPTS_TEMPLATE = URL_BASE + "/allconcepts.json?kind=%s";
     public static final String URL_ID_TEMPLATE = URL_BASE + "/id.json?idType=%s&idString=%s";
     public static final String URL_SEARCH_NAME_TEMPLATE = URL_BASE + "/search.son?conceptName=%s&kindName=%s";
     public static final String URL_ALL_TEMPLATE = URL_BASE + "/allInfo.json?nui=%s";
@@ -25,6 +30,10 @@ public class NdfrtServiceProxy implements NdfrtService {
     public static final String URL_REVERSE_ROLE_TEMPLATE = URL_BASE + "/reverse.json?nui=%s&roleName=%s&transitive=%s";
     public static final String URL_ROLE_TEMPLATE = URL_BASE + "/role.json?nui=%s&roleName=%s&transitive=%s";
     public static final String URL_ASSOCIATION_TEMPLATE = URL_BASE + "/associations.json?nui=%s&associationName=%s";
+    public static final String URL_EPCC_TEMPLATE = URL_BASE + "/EPCC.json?nui=%s";
+    public static final String URL_VAMEMBER_TEMPLATE = URL_BASE + "/VAMember.json?nui=%s";
+    public static final String URL_VA_TEMPLATE = URL_BASE + "/VA.json?nui=%s";
+
     private final Gson gson = new Gson();
 
     @Override
@@ -98,18 +107,79 @@ public class NdfrtServiceProxy implements NdfrtService {
     }
 
     @Override
-    public GroupConceptResponse getEPCClassOfConcept(String nui) {
-        throw new UnsupportedOperationException("Not Implemented");
+    public GroupConceptResponse getEPCClassOfConcept(String nui) throws IOException {
+        return getResponseFromNihServer(GroupConceptResponse.class,
+                URL_EPCC_TEMPLATE, new String[]{nui});
     }
 
     @Override
-    public GroupConceptResponse getVAClassMembers(String nui) {
-        throw new UnsupportedOperationException("Not Implemented");
+    public GroupConceptResponse getVAClassMembers(String nui) throws IOException {
+        return getResponseFromNihServer(GroupConceptResponse.class,
+                URL_VAMEMBER_TEMPLATE, new String[]{nui});
     }
 
     @Override
-    public GroupConceptResponse getVAClassOfConcept(String nui) {
-        throw new UnsupportedOperationException("Not Implemented");
+    public ConceptListResponse getVAClassOfConcept(String nui) throws IOException {
+        return getResponseFromNihServer(ConceptListResponse.class,
+                URL_VA_TEMPLATE, new String[]{nui});
+    }
+
+    @Override
+    public void getAllConceptsByKind(List<KindNames> kinds, ConceptHandler handler){
+        StringBuilder kindsParam = new StringBuilder();
+        for(KindNames kind : kinds){
+            kindsParam = kindsParam.append(kind.toString()).append("+");
+
+        }
+        String urlString = String.format(URL_ALL_CONCEPTS_TEMPLATE, kindsParam.toString());
+        JsonReader reader = null;
+        try {
+            HttpURLConnection connection = (HttpURLConnection) new URL(urlString).openConnection();
+            reader = new JsonReader(new InputStreamReader(connection.getInputStream()));
+            reader.beginObject();
+
+            while(reader.hasNext()){
+                if(reader.peek() == JsonToken.NAME){
+                    String name = reader.nextName();
+                    if(name.equalsIgnoreCase("groupConcepts")){
+                        reader.beginArray();
+                        reader.beginObject();
+                    }else if(name.equalsIgnoreCase("concept")){
+                        reader.beginArray();
+                        while(reader.peek() == JsonToken.BEGIN_OBJECT){
+                            Concept concept = new Concept();
+                            reader.beginObject();
+
+                            while(reader.peek() == JsonToken.NAME) {
+                                name = reader.nextName();
+                                String value = reader.nextString();
+                                if (name.equalsIgnoreCase("conceptName")) {
+                                    concept.setConceptName(value);
+                                } else if (name.equalsIgnoreCase("conceptNui")) {
+                                    concept.setConceptNui(value);
+                                } else if (name.equalsIgnoreCase("conceptKind")) {
+                                    concept.setConceptKind(KindNames.valueOf(value));
+                                }
+                            }
+                            handler.handleConcept(concept);
+                            reader.endObject();
+                        }
+                    }
+                }else{
+                    reader.skipValue();
+                }
+            }
+
+            handler.onCompleted();
+        } catch (IOException e) {
+            handler.onError(e);
+        } finally {
+            if(reader != null) try {
+                reader.close();
+            } catch (IOException e) {
+                handler.onError(e);
+            }
+        }
     }
 
     protected <T> T getResponseFromNihServer(Class<T> classType, String template, String[] parameters) throws IOException{
@@ -119,6 +189,7 @@ public class NdfrtServiceProxy implements NdfrtService {
         String urlString = String.format(template, (Object[]) parameters);
         return getResponseFromNihServer(new URL(urlString), classType);
     }
+
     protected <T> T getResponseFromNihServer(URL url, Class<T> classType) throws IOException{
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         InputStreamReader inputReader = new InputStreamReader(connection.getInputStream());

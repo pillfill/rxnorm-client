@@ -30,7 +30,7 @@ Nothing too ambitious, but we'll try to stick to a few principles along the way:
  * Minimize external runtime dependencies- Currently only the Gson library.
  * Keep the library focused on the data schemas and basic service proxies.
  * Unit test using JSON documents captured from the live RxNav service.
- * Integration test using the real RxNav service endpoints (lightly though to not violate RxNav's ToS).
+ * Integration test using the real RxNav service endpoints (lightly, though, [as to not violate RxNav's ToS](http://rxnav.nlm.nih.gov/TermOfService.html)).
  * Depend on schemas to generate databinding objects in order to maximize reusability.
  * Try to provide a clear mapping to the [RxNav service documentation](http://rxnav.nlm.nih.gov/APIsOverview.html).
 
@@ -39,7 +39,15 @@ Nothing too ambitious, but we'll try to stick to a few principles along the way:
 
  We have a subset of JSON schemas defined and unit tested for the [RxNorm, NDFRT, and Interaction](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas) services.
 
- None of the service proxies have been built yet, though the current plan is to use Gson to manage serialization tasks.
+ The [NDFRT Service](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtService.java)
+ interface has been created and its [proxy implementation](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtServiceProxy.java)
+ defined with [JUnit tests](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtServiceProxyTest.java)
+ to show basic functionality and implementation strategy.
+
+ TODO:
+ `RxNorm Service`
+ `Interaction Service`
+
 
  Want to contribute? Pull requests are encouraged!
 

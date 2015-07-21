@@ -1,4 +1,4 @@
 language: java
 jdk:
   - oraclejdk8
-script: ./gradle clean build integrationTest
+script: ./gradlew clean build integrationTest

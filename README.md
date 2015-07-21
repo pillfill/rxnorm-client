@@ -39,7 +39,9 @@ Nothing too ambitious, but we'll try to stick to a few principles along the way:
 
 ##Current Status
 
- We have a subset of JSON schemas defined and unit tested for the [RxNorm, NDFRT, and Interaction](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas) services.
+ We have a subset of JSON schemas defined and unit tested for the [RxNorm, NDFRT, and Interaction](https://github.com/pillfill/rxnorm-client/tree/master/src/main/resources/schemas) services against static JSON content.
+
+###Implemented Service Proxies:
 
  * NdfrtService ([NIH Documentation](http://rxnav.nlm.nih.gov/NdfrtAPIs.html))
   * Service Interface: [NdfrtService](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/ndfrt/NdfrtService.java)
@@ -51,8 +53,11 @@ Nothing too ambitious, but we'll try to stick to a few principles along the way:
   * Default Implementation: [NihRxNormServiceProxy](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/NihRxNormServiceProxy.java)
   * Integration Tests: [NihRxNormServiceProxyTests](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/NihRxNormServiceProxyTest.java)
 
- TODO:
- * `Interaction Service`
+ * InteractionService ([NIH Documentation](http://rxnav.nlm.nih.gov/InteractionAPIs.html))
+  * Service Interface: [RxNormService](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/interaction/InteractionService.java)
+  * Default Implementation: [NihInteractionServiceProxy](https://github.com/pillfill/rxnorm-client/blob/master/src/main/java/com/apothesource/pillfill/rxnorm/service/interaction/NihInteractionServiceProxy.java)
+  * Integration Tests: [NihRxNormServiceProxyTests](https://github.com/pillfill/rxnorm-client/blob/master/src/test/java/com/apothesource/pillfill/rxnorm/service/interaction/NihInteractionServiceProxyTest.java)
+
 
  Want to contribute? Pull requests are encouraged!
 

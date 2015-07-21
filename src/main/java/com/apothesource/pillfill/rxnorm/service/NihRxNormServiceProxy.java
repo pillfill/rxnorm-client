@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
 
 /**
  * Default Implementation of the {@link RxNormService} backed by NIH's services
@@ -22,6 +23,10 @@ public class NihRxNormServiceProxy implements RxNormService{
     public static final String URL_GET_PROPERTIES_TEMPLATE =  URL_BASE + "/rxcui/%s/allProperties.json?prop=%s";
     public static final String URL_GET_RELATED_TEMPLATE = URL_BASE + "/rxcui/%s/allrelated.json";
     public static final String URL_FIND_APPROXIMATE_TEMPLATE = URL_BASE + "/approximateTerm.json?term=%s&maxEntries=%s&option=0";
+    public static final String URL_GET_RELATED_BY_TYPE_TEMPLATE = URL_BASE + "/rxcui/%s/related.json?tty=%s";
+    public static final String URL_GET_RELATED_BY_REL_TEMPLATE = URL_BASE + "/rxcui/%s/related.json?rela=%s";
+    public static final String URL_GET_NDCS_TEMPLATE = URL_BASE + "/rxcui/%s/ndcs.json";
+    public static final String URL_GET_BRAND_ING_TEMPLATE = URL_BASE + "/brands.json?ingredientids=%s";
     private final Gson gson = new Gson();
 
     @Override
@@ -46,8 +51,8 @@ public class NihRxNormServiceProxy implements RxNormService{
     }
 
     @Override
-    public RelatedGroupResponse getAllRelatedInfo(String id) throws IOException{
-        return getResponseFromNihServer(RelatedGroupResponse.class,
+    public AllRelatedGroupResponse getAllRelatedInfo(String id) throws IOException{
+        return getResponseFromNihServer(AllRelatedGroupResponse.class,
                 URL_GET_RELATED_TEMPLATE,
                 new String[]{id});
     }
@@ -57,6 +62,43 @@ public class NihRxNormServiceProxy implements RxNormService{
         return getResponseFromNihServer(ApproximateGroupResponse.class,
                 URL_FIND_APPROXIMATE_TEMPLATE,
                 new String[]{id,"" + maxEntries});
+    }
+
+    @Override
+    public RelatedGroupResponse getRelatedByRelationship(String id, List<RelationshipNames> rela) throws IOException {
+        StringBuilder paramBuilder = new StringBuilder();
+        for(RelationshipNames rn : rela){
+            paramBuilder = paramBuilder.append(rn.toString()).append("+");
+        }
+        URL url = new URL(String.format(URL_GET_RELATED_BY_REL_TEMPLATE, id, paramBuilder.toString()));
+        return getResponseFromNihServer(url, RelatedGroupResponse.class);
+    }
+
+    @Override
+    public RelatedGroupResponse getRelatedByType(String id, List<TTYNames> ttys) throws IOException {
+        StringBuilder paramBuilder = new StringBuilder();
+        for(TTYNames tty : ttys){
+            paramBuilder = paramBuilder.append(tty.toString()).append("+");
+        }
+        URL url = new URL(String.format(URL_GET_RELATED_BY_TYPE_TEMPLATE, id, paramBuilder.toString()));
+        return getResponseFromNihServer(url, RelatedGroupResponse.class);
+    }
+
+    @Override
+    public NdcsGroupResponse getNdcs(String id) throws IOException {
+        return getResponseFromNihServer(NdcsGroupResponse.class,
+                URL_GET_NDCS_TEMPLATE,
+                new String[]{id});
+    }
+
+    @Override
+    public BrandGroupResponse getMultiIngredBrand(List<String> ingredientIds) throws IOException {
+        StringBuilder paramBuilder = new StringBuilder();
+        for(String id : ingredientIds){
+            paramBuilder = paramBuilder.append(id).append("+");
+        }
+        URL url = new URL(String.format(URL_GET_BRAND_ING_TEMPLATE, paramBuilder.toString()));
+        return getResponseFromNihServer(url, BrandGroupResponse.class);
     }
 
     protected <T> T getResponseFromNihServer(Class<T> classType, String template, String[] parameters) throws IOException{

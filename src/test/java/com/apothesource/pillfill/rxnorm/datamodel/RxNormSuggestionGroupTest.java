@@ -26,7 +26,7 @@ public class RxNormSuggestionGroupTest {
         ClassLoader cl = NdfrtGroupConceptTest.class.getClassLoader();
         File testJsonResponseFile = new File(cl.getResource("json/rxnorm-related-response.json").getFile());
         FileReader jsonStreamReader = new FileReader(testJsonResponseFile);
-        RelatedGroupResponse response = gson.fromJson(jsonStreamReader, RelatedGroupResponse.class);
+        AllRelatedGroupResponse response = gson.fromJson(jsonStreamReader, AllRelatedGroupResponse.class);
         jsonStreamReader.close();
 
         List<ConceptGroup> relatedGroup = response.getAllRelatedGroup().getConceptGroup();

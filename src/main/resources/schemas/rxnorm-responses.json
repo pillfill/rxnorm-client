@@ -2,6 +2,43 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://apothesource.com/rxnorm/rxnorm-responses",
   "type": "object",
+  "definitions": {
+    "relatedGroup": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.RelatedGroup",
+      "properties": {
+        "rxcui": {
+          "type": "string"
+        },
+        "rela": {
+          "type": "array",
+          "items": {
+            "$ref": "rxnorm-core.json#/definitions/relationship"
+          }
+        },
+        "termType": {
+          "type": "array",
+          "items": {
+            "$ref": "rxnorm-core.json#/definitions/tty"
+          }
+        },
+        "conceptGroup": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "tty": {
+                "$ref": "rxnorm-core.json#/definitions/tty"
+              },
+              "conceptProperties": {
+                "$ref": "rxnorm-core.json#/definitions/conceptProperties"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "properties": {
     "idGroupResponse":{
       "type": "object",
@@ -88,32 +125,23 @@
         }
       }
     },
+    "allRelatedGroupResponse": {
+      "type": "object",
+      "id": "http://apothesource.com/rxnorm/allrelated",
+      "javaType" : "com.apothesource.pillfill.rxnorm.datamodel.AllRelatedGroupResponse",
+      "properties": {
+        "allRelatedGroup": {
+          "$ref": "#/definitions/relatedGroup"
+        }
+      }
+    },
     "relatedGroupResponse": {
       "type": "object",
       "id": "http://apothesource.com/rxnorm/related",
       "javaType" : "com.apothesource.pillfill.rxnorm.datamodel.RelatedGroupResponse",
       "properties": {
-        "allRelatedGroup": {
-          "type": "object",
-          "properties": {
-            "rxcui": {
-              "type": "string"
-            },
-            "conceptGroup": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "tty": {
-                    "$ref": "rxnorm-core.json#/definitions/tty"
-                  },
-                  "conceptProperties": {
-                    "$ref":"rxnorm-core.json#/definitions/conceptProperties"
-                  }
-                }
-              }
-            }
-          }
+        "relatedGroup": {
+          "$ref": "#/definitions/relatedGroup"
         }
       }
     },
@@ -153,6 +181,31 @@
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    },
+    "brandGroupResponse": {
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.BrandGroupResponse",
+      "properties": {
+        "brandGroup": {
+          "type": "object",
+          "properties": {
+            "ingredientList":{
+              "type": "object",
+              "properties":{
+                "rxnormId":{
+                  "type": "array",
+                  "items":{
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "conceptProperties": {
+              "$ref": "rxnorm-core.json#/definitions/conceptProperties"
             }
           }
         }

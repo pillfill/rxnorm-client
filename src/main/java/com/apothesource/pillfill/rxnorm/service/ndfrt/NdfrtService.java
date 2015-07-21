@@ -189,6 +189,13 @@ public interface NdfrtService {
     ConceptListResponse getVAClassOfConcept(String nui) throws IOException;
 
     /**
+     * Get the date for the last update of the underlying NDFRT data
+     * @return A date
+     * @throws IOException
+     */
+    VersionResponse getNdfrtVersion() throws IOException;
+
+    /**
      * Get concept information for specified kinds.
      *
      * @param kindList one or more Kind identifiers. See /kindList example for valid values.

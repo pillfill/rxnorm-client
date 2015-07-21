@@ -33,6 +33,7 @@ public class NdfrtServiceProxy implements NdfrtService {
     public static final String URL_EPCC_TEMPLATE = URL_BASE + "/EPCC.json?nui=%s";
     public static final String URL_VAMEMBER_TEMPLATE = URL_BASE + "/VAMember.json?nui=%s";
     public static final String URL_VA_TEMPLATE = URL_BASE + "/VA.json?nui=%s";
+    public static final String URL_VERSION = URL_BASE + "/version.json";
 
     private final Gson gson = new Gson();
 
@@ -122,6 +123,14 @@ public class NdfrtServiceProxy implements NdfrtService {
     public ConceptListResponse getVAClassOfConcept(String nui) throws IOException {
         return getResponseFromNihServer(ConceptListResponse.class,
                 URL_VA_TEMPLATE, new String[]{nui});
+    }
+
+    @Override
+    public VersionResponse getNdfrtVersion() throws IOException {
+        return getResponseFromNihServer(
+                new URL(URL_VERSION),
+                VersionResponse.class
+        );
     }
 
     @Override

@@ -153,6 +153,14 @@ public class NdfrtServiceProxyTest {
 
     @Test
     @Category(ServiceIntegrationTest.class)
+    public void testGetVersion() throws IOException{
+        VersionResponse response = proxy.getNdfrtVersion();
+        assertThat("Version date is not null", response.getVersion().getVersionName(), Matchers.notNullValue());
+        assertThat("Version date matches YYYY.MM.DD format", response.getVersion().getVersionName(), Matchers.matchesPattern("[\\d]{4}\\.[\\d]{2}\\.[\\d]{2}"));
+    }
+
+    @Test
+    @Category(ServiceIntegrationTest.class)
     public void testGetAllConcepts() throws IOException{
         proxy.getAllConceptsByKind(Arrays.asList(KindNames.PHARMACOKINETICS_KIND,KindNames.THERAPEUTIC_CATEGORY_KIND), new ConceptHandler() {
             int conceptCount = 0;

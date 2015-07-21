@@ -43,6 +43,20 @@
         }
       }
     },
+    "versionResponse":{
+      "type": "object",
+      "javaType": "com.apothesource.pillfill.rxnorm.datamodel.ndf.VersionResponse",
+      "properties":{
+        "version": {
+          "type": "object",
+          "properties": {
+            "versionName": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
     "groupConceptsResponse": {
       "type": "object",
       "extends": {"$ref":"#/properties/baseGroupResponse"},

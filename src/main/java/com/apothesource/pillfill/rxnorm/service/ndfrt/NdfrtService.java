@@ -5,40 +5,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- Services to find and retrieve NDF-RT Concepts Some of the parameters & ordering in this interface are intentionally inconsistent to match the NIH documentation.
- http://rxnav.nlm.nih.gov/NdfrtAPIs.html
-
- ApiList-
-
- {@link #findConceptsByID}                  Get the NDF-RT concept for a specified identifier
- {@link #findConceptsByName}                Search the concepts for a specified name and kind
- {@link #getAllInfo}                        Get concept information
- {@link #getChildConcepts}                  Get the child concepts for a specified concept
- {@link #getParentConcepts}                 Get the parent concepts for a specified concept
- {@link #getConceptProperties}              Get the concept property value for a specified concept and property name
- {@link #getConceptsByProperty}             Search for concepts containing the specified property
- {@link #getRelatedConceptsByAssociation}   Get the associations for a specified concept
- {@link #getRelatedConceptsByReverseRole}   Get the concepts related to the specified object concept by role.
- {@link #getRelatedConceptsByRole}          Get the associations for a specified concept
- {@link #getEPCClassOfConcept}	            Get the FDA Established Pharmacologic Classes (EPC) for a concept
- {@link #getRelatedConceptsByRole}          Get the concepts related to the specified concept by role
- {@link #getVAClassMembers}                 Get the members of a VA class
- {@link #getVAClassOfConcept}               Get the VA class for a specified concept
- {@link #getNdfrtVersion}                   Get the version of the NDF-RT data set
-
- Bulk Concept Queries:
- {@link #getAllConceptsByKind}              Get concept information for specified kinds.
-
- List Type Queries (Not Implemented Since Values are Included in Related Enum Objects):
- {@link AssociationNames}   Get the association names
- {@link IdTypeNames}        Get the identifier type names
- {@link KindNames}          Get the kind names in the NDF-RT data set
- {@link PropertyNames}      Get the property names in the NDF-RT data set
- {@link RoleNames}          Get the role names in the NDF-RT data set
-
-
-
+ * Services to find and retrieve NDF-RT Concepts. <a href="http://rxnav.nlm.nih.gov/NdfrtAPIs.html">NIH Documentation</a>.
  *
+ * Note: Some of the parameters & ordering in this interface are intentionally inconsistent to match the NIH documentation.
  *
  * @author Michael Ramirez (michael@pillfill.com)
  */

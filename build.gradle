@@ -1,5 +1,7 @@
 apply plugin: 'jsonschema2pojo'
 apply plugin: 'java'
+apply plugin: 'signing'
+apply plugin: 'maven'
 
 buildscript {
     repositories {
@@ -13,6 +15,12 @@ buildscript {
 repositories {
     mavenCentral()
 }
+
+group = 'com.apothesource.pillfill'
+archivesBaseName = 'rxnorm-client'
+version = '1.0.0-SNAPSHOT'
+def isReleaseVersion = !version.endsWith("SNAPSHOT")
+
 
 dependencies {
     compile 'com.google.code.gson:gson:2.3.1'
@@ -50,4 +58,69 @@ jsonSchema2Pojo {
     removeOldOutput = true
     includeToString = false
     includeHashcodeAndEquals = false
+}
+
+javadoc{
+    failOnError false
+    exclude "**com/apothesource/pillfill/datamodel/**"
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+artifacts {
+    archives javadocJar, sourcesJar
+}
+signing {
+    required=isReleaseVersion
+    if(isReleaseVersion) sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'PillFill RxNorm Client'
+                packaging 'jar'
+                description 'A lightweight java client library for the NIH RxNav (RxNorm) services'
+                url 'https://github.com/pillfill/rxnorm-client'
+
+                scm {
+                    connection 'scm:git:git://github.com/pillfill/rxnorm-client.git'
+                    developerConnection 'scm:git:git://github.com/pillfill/rxnorm-client.git'
+                    url 'https://github.com/pillfill/rxnorm-client'
+                }
+
+                licenses {
+                    license {
+                        name 'MIT License'
+                        url 'https://raw.githubusercontent.com/pillfill/rxnorm-client/master/license.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'rammic'
+                        name 'Michael Ramirez'
+                        email 'michael@pillfill.com'
+                    }
+                }
+            }
+        }
+    }
 }

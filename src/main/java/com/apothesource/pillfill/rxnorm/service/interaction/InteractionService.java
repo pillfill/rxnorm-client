@@ -9,8 +9,10 @@ import java.util.List;
 /**
  * The Drug Interaction RESTful web API is a simple web service implemented using HTTP and can be thought of as a
  * collection of resources, specified as URIs.
- *
- * http://rxnav.nlm.nih.gov/InteractionAPIREST.html
+ * <br/>
+ * <a href="http://rxnav.nlm.nih.gov/InteractionAPIREST.html">NIH Documentation.</a>
+ * <br/>
+ * Note: Some of the parameters & ordering in this interface are intentionally inconsistent to match the NIH documentation.
  *
  * Created by Michael Ramirez (michael@pillfill.com) on 7/21/15.
  */

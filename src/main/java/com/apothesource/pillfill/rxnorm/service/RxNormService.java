@@ -8,6 +8,9 @@ import java.util.List;
 
 /**
  * The RxNorm API is a web service for accessing the current RxNorm data set.
+ * <a href="http://rxnav.nlm.nih.gov/RxNormAPIs.html">NIH Documentation.</a>
+ *
+ * Note: Some of the parameters & ordering in this interface are intentionally inconsistent to match the NIH documentation.
  *
  * Created by Michael Ramirez (michael@pillfill.com) on 7/21/15.
  */

@@ -1,5 +1,7 @@
 #PillFill RxNorm Client
 
+[![Build Status](https://travis-ci.org/pillfill/rxnorm-client.svg?branch=master)](https://travis-ci.org/pillfill/rxnorm-client)
+
  This project is working to create a lightweight REST Java/Android client library for the [RxNav APIs](http://rxnav.nlm.nih.gov/APIsOverview.html), services managed by the National Library of Medicine (NLM) &  National Institutes of Health (NIH). While we're unabashed fans of the services, please note this project **has no affiliation with NLM, NIH, or HHS**.
 
 ##Why?

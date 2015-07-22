@@ -1,3 +1,5 @@
+import static org.gradle.api.JavaVersion.*
+
 apply plugin: 'jsonschema2pojo'
 apply plugin: 'java'
 apply plugin: 'signing'
@@ -21,6 +23,8 @@ archivesBaseName = 'rxnorm-client'
 version = '1.1.0-SNAPSHOT'
 def isReleaseVersion = !version.endsWith("SNAPSHOT")
 
+sourceCompatibility = VERSION_1_7
+targetCompatibility = VERSION_1_7
 
 dependencies {
     compile 'com.google.code.gson:gson:2.3.1'
